@@ -29,9 +29,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0n1p1"; 
     # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
