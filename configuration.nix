@@ -10,6 +10,13 @@
       ./hardware-configuration.nix
     ];
 
+  nix = {
+    settings = {
+      trusted-public-keys = [
+        "datantho-nixos.cachix.org-1:7mXkZZm1vhW5N0xNuMaYQh/lipZKopDEHXKpcsiDWt8="
+      ];
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
