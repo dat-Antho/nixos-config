@@ -131,6 +131,7 @@
        unzip
        #end nvim deps
        cachix
+       discord
      ];
    };
   environment.sessionVariables = {
