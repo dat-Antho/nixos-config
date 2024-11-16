@@ -118,6 +118,7 @@
        libgcc
        unzip
        #end nvim deps
+       cachix
      ];
    };
   environment.sessionVariables = {
