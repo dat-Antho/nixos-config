@@ -4,29 +4,26 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
-
+  schedule:
+    - cron: "0 0 * * WED" 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v21
+        uses: actions/checkout@v4
+      - name: List repository files
+        run: ls -R
+      - uses: cachix/install-nix-action@v25
         with:
-          nix_version: "latest"
+          nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Use Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v15
         with:
-          name: "<cachix-cache-name>"
-          signing_key: ${{ secrets.CACHIX_SIGNING_KEY }}
-
+          name: "datantho-nixos"
+          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main # improve build speed
       - name: Build configuration.nix
-        run: |
-          nix-build '<nixpkgs/nixos>' \
-            -I nixos-config=./configuration.nix \
-            -A system
+        run: nix-build '<nixpkgs/nixos>' -I nixos-config=./configuration.nix -A system
