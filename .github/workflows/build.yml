@@ -24,6 +24,5 @@ jobs:
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@main # improve build speed
       - name: Build configuration.nix
         run: nix-build '<nixpkgs/nixos>' -I nixos-config=./configuration.nix -A system
