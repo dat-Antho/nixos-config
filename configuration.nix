@@ -131,6 +131,7 @@
        #end nvim deps
        cachix
        discord
+       stremio
      ];
    };
   environment.sessionVariables = {
@@ -147,11 +148,6 @@
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder from syncthing
   users.users.anthony.shell = pkgs.bash;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
   nix.optimise.automatic = true;
   # keeps the last 5 generations in grub
