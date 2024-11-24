@@ -20,7 +20,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix flake update
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
           branch: master
