@@ -30,6 +30,7 @@
     programs/newsboat.nix
     programs/zsh.nix
     programs/git.nix
+    programs/nvim.nix
   ];
   programs.starship.enable = true;
 
