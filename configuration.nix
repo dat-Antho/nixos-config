@@ -113,19 +113,8 @@
        firefox
        tree
        protonup
-       filezilla
        keepassxc
-       git
-       htop
-       obsidian
-       discord
-       thunderbird
-       newsboat
-       wget
        steam-run
-       cachix
-       discord
-       stremio
      ];
    };
   environment.sessionVariables = {
@@ -141,7 +130,8 @@
     user="anthony";
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder from syncthing
-  users.users.anthony.shell = pkgs.bash;
+  programs.zsh.enable = true;
+  users.users.anthony.shell = pkgs.zsh;
 
   nix.optimise.automatic = true;
   # keeps the last 5 generations in grub

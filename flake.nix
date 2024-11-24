@@ -15,6 +15,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.anthony = import ./home.nix;
+            home-manager.backupFileExtension ="hm-backup";
           }
         ];
         
