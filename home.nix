@@ -23,11 +23,12 @@
     pkgs.thunderbird
     pkgs.newsboat
     pkgs.wget
-
+    pkgs.starship
   ];
 
   programs.bash.enable = true; # Active des options pour Bash
   programs.git.enable = true; # Configure Git
+  programs.starship.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -41,14 +42,6 @@
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "thefuck"
-      ];
-      theme = "robbyrussell";
     };
   };
 }
