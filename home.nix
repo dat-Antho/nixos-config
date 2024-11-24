@@ -8,12 +8,6 @@
   home.packages = [
     pkgs.git
     pkgs.htop
-    #nvim deps
-    pkgs.neovim
-    pkgs.clang
-    pkgs.libgcc
-    pkgs.unzip
-    #nvim deps end
     pkgs.discord
     pkgs.filezilla
     pkgs.keepassxc
