@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix = {
     settings = {
@@ -23,16 +28,19 @@
       ];
     };
   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "/dev/nvme0n1p1"; 
-    # Enable OpenGL
+  boot.loader.grub.device = "/dev/nvme0n1p1";
+  # Enable OpenGL
   hardware.graphics.enable = true;
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
 
     # Modesetting is required.
@@ -57,7 +65,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -99,35 +107,34 @@
   # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anthony = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     initialPassword = "test"; 
-     packages = with pkgs; [
-       firefox
-       tree
-       protonup
-       keepassxc
-       steam-run
-     ];
-   };
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    initialPassword = "test";
+    packages = with pkgs; [
+      firefox
+      tree
+      protonup
+      keepassxc
+      steam-run
+    ];
+  };
   environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
-      "\${HOME}/.steam/root/compatibilitytools.d";
-  }; 
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+  };
   fonts.packages = with pkgs; [
-  (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    user="anthony";
+    user = "anthony";
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder from syncthing
   programs.zsh.enable = true;
@@ -163,4 +170,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-
