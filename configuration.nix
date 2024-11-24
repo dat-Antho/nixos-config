@@ -123,12 +123,6 @@
        newsboat
        wget
        steam-run
-       #nvim deps
-       neovim
-       clang
-       libgcc
-       unzip
-       #end nvim deps
        cachix
        discord
        stremio
