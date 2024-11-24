@@ -21,20 +21,35 @@
     pkgs.obsidian
     pkgs.discord
     pkgs.thunderbird
-    pkgs.newsboat
     pkgs.wget
     pkgs.starship
+    pkgs.glibcLocales
   ];
 
   programs.bash.enable = true; # Active des options pour Bash
-  programs.git.enable = true; # Configure Git
+  programs.git = {
+    enable = true;
+    userEmail = "16465475+dat-Antho@users.noreply.github.com";
+    userName = "anthony";
+  };
   programs.starship.enable = true;
+
+  programs.newsboat = {
+    enable = true;
+    autoReload = true;
+    browser = "firefox";
+    urls = [
+      { url = "https://nixos.org/blog/announcements-rss.xml"; }
+      { url = "https://www.reddit.com/r/linux_gaming/top/.rss?sort=top&t=week"; }
+      { url = "https://www.gamingonlinux.com/article_rss.php"; }
+    ];
+  };
 
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-
+    initExtraFirst = "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8";
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
@@ -48,7 +63,6 @@
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "MichaelAquilina/zsh-you-should-use"; }
-        { name = "plugins/git";}
       ];
     };
   };
