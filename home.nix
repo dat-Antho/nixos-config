@@ -18,6 +18,7 @@
     pkgs.thunderbird
     pkgs.wget
     pkgs.starship
+    pkgs.stremio
   ];
 
   imports = [
