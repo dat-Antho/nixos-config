@@ -4,6 +4,7 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    defaultKeymap = "emacs";
     initExtraFirst = "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8";
     shellAliases = {
       ll = "ls -l";
