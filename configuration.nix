@@ -151,11 +151,11 @@
 
   # network
   networking.nameservers = [
-  "1.1.1.1"
-  "1.0.0.1"
-  "2606:4700:4700::1111"
-  "2606:4700:4700::1001"
-];
+    "1.1.1.1"
+    "1.0.0.1"
+    "2606:4700:4700::1111"
+    "2606:4700:4700::1001"
+  ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
