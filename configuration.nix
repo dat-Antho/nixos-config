@@ -96,6 +96,7 @@
     mangohud
   ];
 
+  services.flatpak.enable = true;
   programs.gamemode.enable = true;
   # hardware.opengl has beed changed to hardware.graphics
 
