@@ -129,7 +129,7 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
   };
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerd-fonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   services.syncthing = {
     enable = true;
