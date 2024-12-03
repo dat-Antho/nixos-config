@@ -6,6 +6,7 @@
   config,
   lib,
   pkgs,
+  options,
   ...
 }:
 
@@ -77,7 +78,8 @@
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   time.timeZone = "Europe/Amsterdam";
-
+  services.ntp.enable = true;
+  networking.timeServers = options.networking.timeServers.default ++ [ "0.fr.pool.ntp.org" ]; 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
