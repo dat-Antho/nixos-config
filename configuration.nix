@@ -99,7 +99,8 @@
   services.flatpak.enable = true;
   programs.gamemode.enable = true;
   # hardware.opengl has beed changed to hardware.graphics
-
+  networking.networkmanager.enable = true;
+  programs.partition-manager.enable = true;
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "intl";
