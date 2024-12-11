@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   programs.tmux = {
-    enable = true; 
+    enable = true;
     sensibleOnTop = true;
   };
 
