@@ -48,7 +48,7 @@
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -58,9 +58,9 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
@@ -79,7 +79,7 @@
 
   time.timeZone = "Europe/Amsterdam";
   services.ntp.enable = true;
-  networking.timeServers = options.networking.timeServers.default ++ [ "0.fr.pool.ntp.org" ]; 
+  networking.timeServers = options.networking.timeServers.default ++ [ "0.fr.pool.ntp.org" ];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -115,6 +115,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anthony = {
     isNormalUser = true;
@@ -132,16 +135,16 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
   };
   fonts.packages = [
-          # (
-          #     # ⓘ install the following nerd fonts onto the system
-          #     pkgs.nerdfonts.override {
-          #         fonts = [
-          #             "JetBrainsMono"
-          #         ];
-          #     }
-          # )
-          # use instead :
-          pkgs.nerd-fonts.jetbrains-mono
+    # (
+    #     # ⓘ install the following nerd fonts onto the system
+    #     pkgs.nerdfonts.override {
+    #         fonts = [
+    #             "JetBrainsMono"
+    #         ];
+    #     }
+    # )
+    # use instead :
+    pkgs.nerd-fonts.jetbrains-mono
   ];
   services.syncthing = {
     enable = true;

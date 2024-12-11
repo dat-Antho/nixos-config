@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
-
 {
-
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
   home.stateVersion = "24.05";
@@ -18,7 +16,9 @@
     pkgs.thunderbird
     pkgs.wget
     pkgs.starship
-    pkgs.stremio
+    pkgs.mpv
+    pkgs.exfat
+    pkgs.rclone
   ];
 
   imports = [ ./programs ];
