@@ -40,8 +40,10 @@
   boot.loader.grub.device = "/dev/nvme0n1p1";
   # Enable OpenGL
   hardware.graphics.enable = true;
+  hardware.keyboard.qmk.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.udev.packages = [ pkgs.via ];
   hardware.nvidia = {
 
     # Modesetting is required.

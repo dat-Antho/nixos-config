@@ -19,6 +19,13 @@
     pkgs.mpv
     pkgs.exfat
     pkgs.rclone
+    pkgs.qmk
+    pkgs.vial
+    pkgs.protonvpn-gui
+    pkgs.qbittorrent
+    pkgs.vdhcoapp
+    pkgs.google-chrome
+
   ];
 
   imports = [ ./programs ];
