@@ -74,6 +74,10 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+ # fileSystems."/mnt/data" = {
+ # device = "/dev/sda";  # Remplacez par l'identifiant de votre partition
+ # fsType = "ext4";       # Remplacez si vous avez choisi un autre type de système de fichiers
+#};
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
