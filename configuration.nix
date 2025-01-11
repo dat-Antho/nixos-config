@@ -103,7 +103,7 @@
   environment.systemPackages = with pkgs; [
     mangohud
   ];
-
+  programs.localsend.enable = true; # airdrop alternative
   services.flatpak.enable = true;
   programs.gamemode.enable = true;
   # hardware.opengl has beed changed to hardware.graphics
