@@ -19,6 +19,8 @@
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "MichaelAquilina/zsh-you-should-use"; }
+        { name = "mafredri/zsh-async"; tags= [from:github];}
+        { name = "sindresorhus/pure"; tags = [as:theme use:pure.zsh from:github ]; }
       ];
     };
   };
