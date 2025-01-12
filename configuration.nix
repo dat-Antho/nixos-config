@@ -74,10 +74,10 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
- # fileSystems."/mnt/data" = {
- # device = "/dev/sda";  # Remplacez par l'identifiant de votre partition
- # fsType = "ext4";       # Remplacez si vous avez choisi un autre type de système de fichiers
-#};
+  # fileSystems."/mnt/data" = {
+  # device = "/dev/sda";  # Remplacez par l'identifiant de votre partition
+  # fsType = "ext4";       # Remplacez si vous avez choisi un autre type de système de fichiers
+  #};
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -178,7 +178,34 @@
     "2606:4700:4700::1111"
     "2606:4700:4700::1001"
   ];
-
+  programs.nvf = {
+    enable = true;
+    # your settings need to go into the settings attribute set
+    # most settings are documented in the appendix
+    settings = {
+      vim = {
+        theme = {
+          enable = true;
+          name = "gruvbox";
+          style = "dark";
+        };
+        viAlias = false;
+        vimAlias = true;
+        lsp = {
+          enable = true;
+        };
+        statusline.lualine.enable = true;
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+        languages = {
+                enableLSP = true;
+                enableTreesitter = true;
+        nix.enable = true;
+        python.enable = true;
+        };
+      };
+    };
+  };
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
