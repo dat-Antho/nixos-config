@@ -15,7 +15,6 @@
     pkgs.discord
     pkgs.thunderbird
     pkgs.wget
-    pkgs.starship
     pkgs.mpv
     pkgs.exfat
     pkgs.rclone
@@ -24,11 +23,11 @@
     pkgs.protonvpn-gui
     pkgs.qbittorrent
     pkgs.vdhcoapp
-    pkgs.google-chrome
-
+    pkgs.easyeffects
   ];
 
-  imports = [ ./programs ];
-  programs.starship.enable = true;
+  imports = [
+    ./programs
+  ];
 
 }
