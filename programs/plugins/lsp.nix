@@ -94,6 +94,10 @@
         pylsp = {
           enable = true;
         };
+        pyright = {
+          enable = true;
+        };
+
 
       };
 
