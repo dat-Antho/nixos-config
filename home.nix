@@ -24,6 +24,7 @@
     pkgs.easyeffects
     pkgs.tldr
     pkgs.neofetch
+    pkgs.ranger
   ];
 
   imports = [
