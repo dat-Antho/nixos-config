@@ -9,8 +9,6 @@
     pkgs.discord
     pkgs.filezilla
     pkgs.keepassxc
-    pkgs.git
-    pkgs.htop
     pkgs.obsidian
     pkgs.discord
     pkgs.thunderbird
