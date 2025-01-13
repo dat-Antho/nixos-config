@@ -22,6 +22,8 @@
     pkgs.qbittorrent
     pkgs.vdhcoapp
     pkgs.easyeffects
+    pkgs.tldr
+    pkgs.neofetch
   ];
 
   imports = [
