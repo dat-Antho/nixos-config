@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   imports = [
 
     # Plugins
@@ -217,7 +218,7 @@
       #  Try it with `yap` in normal mode
       #  See `:help vim.highlight.on_yank()`
       {
-        event = ["TextYankPost"];
+        event = [ "TextYankPost" ];
         desc = "Highlight when yanking (copying) text";
         group = "kickstart-highlight-yank";
         callback.__raw = ''
