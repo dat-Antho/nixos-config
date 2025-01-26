@@ -2,8 +2,6 @@ name: Build NixOS Configuration
 
 on:
   push:
-    branches:
-      - master
   workflow_dispatch:
   workflow_run:
     workflows: ["flake-bump"]
