@@ -14,6 +14,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./nixos-modules/nvidia.nix # everything nvidia
   ];
 
   nix = {
@@ -38,59 +39,16 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0n1p1";
-  # Use latest kernel
+  # Use latest zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
   # Enable OpenGL
   hardware.graphics.enable = true;
   hardware.keyboard.qmk.enable = true;
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.udev.packages = [ pkgs.via ];
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-  };
-  # fileSystems."/mnt/data" = {
-  # device = "/dev/sda";  # Remplacez par l'identifiant de votre partition
-  # fsType = "ext4";       # Remplacez si vous avez choisi un autre type de système de fichiers
-  #};
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   time.timeZone = "Europe/Amsterdam";
   services.ntp.enable = true;
   networking.timeServers = options.networking.timeServers.default ++ [ "0.fr.pool.ntp.org" ];
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -99,17 +57,24 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # FLATPAK
+  services.flatpak.enable = true;
+
+  # STEAM 
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
 
   environment.systemPackages = with pkgs; [
     mangohud
   ];
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+  };
+
+
+  # RANDOM PROGRAMS
   programs.localsend.enable = true; # airdrop alternative
-  services.flatpak.enable = true;
   programs.gamemode.enable = true;
-  # hardware.opengl has beed changed to hardware.graphics
-  networking.networkmanager.enable = true;
   programs.partition-manager.enable = true;
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -139,10 +104,7 @@
       steam-run
     ];
   };
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-  };
-  fonts.packages = [
+    fonts.packages = [
     # (
     #     # ⓘ install the following nerd fonts onto the system
     #     pkgs.nerdfonts.override {
@@ -154,12 +116,17 @@
     # use instead :
     pkgs.nerd-fonts.jetbrains-mono
   ];
+
+
+  # SYNCTHING
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
     user = "anthony";
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder from syncthing
+
+
   programs.zsh.enable = true;
   users.users.anthony.shell = pkgs.zsh;
 
