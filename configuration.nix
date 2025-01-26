@@ -39,8 +39,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0n1p1";
-  # Use latest zen kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # Use latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   # Enable OpenGL
   hardware.graphics.enable = true;
   hardware.keyboard.qmk.enable = true;
