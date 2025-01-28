@@ -1,7 +1,7 @@
 name: flake-bump
 on:
   schedule:
-    - cron: "0 0 * * WED" 
+    - cron: "0 23 */2 * *" 
   workflow_dispatch:
 
 jobs:
