@@ -18,6 +18,7 @@
     ./nixos-modules/steam.nix
     ./nixos-modules/audio.nix
     ./nixos-modules/syncthing.nix
+    ./nixos-modules/nix.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
