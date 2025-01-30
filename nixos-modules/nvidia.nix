@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
 
-  hardware.graphics.enable = true; #Whether to enable hardware accelerated graphics drivers
+  hardware.graphics.enable = true; # Whether to enable hardware accelerated graphics drivers
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   services.udev.packages = [ pkgs.via ];
