@@ -31,7 +31,7 @@
                 nixvim.homeManagerModules.nixvim
               ];
               home-manager.useUserPackages = true;
-              home-manager.users.anthony = import ./home-manager/home.nix;
+              home-manager.users.anthony = import ./home-manager/anthony/home.nix;
               home-manager.backupFileExtension = "hm-backup";
             }
           ];

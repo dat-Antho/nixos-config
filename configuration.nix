@@ -15,6 +15,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./nixos-modules/nvidia.nix # everything nvidia
+    ./nixos-modules/steam.nix # steam config
+    ./nixos-modules/audio.nix # Audio config
   ];
 
   nix = {
@@ -59,19 +61,6 @@
 
   # FLATPAK
   services.flatpak.enable = true;
-
-  # STEAM 
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    mangohud
-  ];
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-  };
-
-
   # RANDOM PROGRAMS
   programs.localsend.enable = true; # airdrop alternative
   programs.gamemode.enable = true;
@@ -80,14 +69,6 @@
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "intl";
   services.xserver.xkb.options = "compose:ralt";
-  # Enable sound.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -104,19 +85,9 @@
       steam-run
     ];
   };
-    fonts.packages = [
-    # (
-    #     # ⓘ install the following nerd fonts onto the system
-    #     pkgs.nerdfonts.override {
-    #         fonts = [
-    #             "JetBrainsMono"
-    #         ];
-    #     }
-    # )
-    # use instead :
+  fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono
   ];
-
 
   # SYNCTHING
   services.syncthing = {
@@ -125,7 +96,6 @@
     user = "anthony";
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder from syncthing
-
 
   programs.zsh.enable = true;
   users.users.anthony.shell = pkgs.zsh;
@@ -137,7 +107,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 15d";
   };
 
   # network
