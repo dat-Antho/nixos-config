@@ -17,7 +17,7 @@ jobs:
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix flake -v check
+      - run: nix flake check
   build:
     needs: flake-check
     runs-on: ubuntu-latest
