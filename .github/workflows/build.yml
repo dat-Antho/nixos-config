@@ -9,6 +9,13 @@ on:
       - completed
 
 jobs:
+  flake-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cachix/install-nix-action@v25
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix flake -v check
   build:
     runs-on: ubuntu-latest
     steps:
@@ -38,5 +45,4 @@ jobs:
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - run: nix flake -v check
       - run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel
