@@ -64,6 +64,7 @@
       protonup
       keepassxc
       steam-run
+      nix-fast-build
     ];
   };
   fonts.packages = [
