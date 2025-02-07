@@ -38,6 +38,7 @@ jobs:
       #     large-packages: true
       #     docker-images: true
       #     swap-storage: true
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-unstable
