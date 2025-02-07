@@ -24,22 +24,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: List repository files
-        run: ls -R
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-        with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-          tool-cache: false
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-          swap-storage: true
+      # - name: Free Disk Space (Ubuntu)
+      #   uses: jlumbroso/free-disk-space@main
+      #   with:
+      #   # this might remove tools that are actually needed,
+      #   # if set to "true" but frees about 6 GB
+      #     tool-cache: false
+      #   # all of these default to true, but feel free to set to
+      #   # "false" if necessary for your workflow
+      #     android: true
+      #     dotnet: true
+      #     haskell: true
+      #     large-packages: true
+      #     docker-images: true
+      #     swap-storage: true
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-unstable
@@ -48,5 +46,5 @@ jobs:
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel
-      #- run: nix run github:Mic92/nix-fast-build -- --cachix-cache datantho-nixos --skip-cached 
+      #- run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel
+      - run: nix run github:Mic92/nix-fast-build -- --cachix-cache datantho-nixos --skip-cached  --flake .#nixosConfigurations.nixos.config.system.build.toplevel
