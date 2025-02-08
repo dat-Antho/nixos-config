@@ -9,6 +9,9 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
+      kde-fix-icons = "sed -i 's/file:\/\/\/nix\/store\/[^\/]*\/share\/applications\//applications:/gi' ~/.config/plasma-org.kde.plasma.desktop-appletsrc && systemctl restart --user plasma-plasmashell";
+      nrb = "sudo nixos-rebuild boot --flake .";
+      nrs= "sudo nixos-rebuild switch --flake .";
     };
     history = {
       size = 10000;
