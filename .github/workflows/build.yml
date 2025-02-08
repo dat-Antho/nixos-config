@@ -33,7 +33,7 @@ jobs:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: Config nix cache
-        uses: nixbuild/cache-nix-action@v5
+        uses: nix-community/cache-nix-action@v5
         with:
           primary-key: nix-fast-build
           restore-prefixes: nix-fast-build
