@@ -36,5 +36,5 @@ jobs:
         uses: nix-community/cache-nix-action@v5
         with:
           primary-key: nix-fast-build
-          restore-prefixes: nix-fast-build
+          restore-prefixes-all-matches: nix-fast-build
       - run: nix run github:Mic92/nix-fast-build -- --cachix-cache datantho-nixos --skip-cached --no-nom --eval-max-memory-size 16384 --flake .#nixosConfigurations.nixos.config.system.build.toplevel
