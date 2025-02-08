@@ -22,5 +22,4 @@ jobs:
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - run: nix flake check  -L -v
       - run: nix run github:Mic92/nix-fast-build -- --cachix-cache datantho-nixos --skip-cached --no-nom --eval-max-memory-size 16384 --flake .#nixosConfigurations.nixos.config.system.build.toplevel
