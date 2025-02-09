@@ -6,43 +6,37 @@
     # be extended to other languages as well. That's why it's called
     # kickstart.nixvim and not kitchen-sink.nixvim ;)
     # https://nix-community.github.io/nixvim/plugins/dap/index.html
-    plugins.dap = {
+    plugins.dap-ui = {
       enable = true;
 
-      extensions = {
-        # Creates a beautiful debugger UI
-        dap-ui = {
-          enable = true;
+      # Creates a beautiful debugger UI
+      settings = {
+        enable = true;
 
-          # Set icons to characters that are more likely to work in every terminal.
-          # Feel free to remove or use ones that you like more! :)
-          # Don't feel like these are good choices.
-          icons = {
-            expanded = "▾";
-            collapsed = "▸";
-            current_frame = "*";
-          };
-
-          controls = {
-            icons = {
-              pause = "⏸";
-              play = "▶";
-              step_into = "⏎";
-              step_over = "⏭";
-              step_out = "⏮";
-              step_back = "b";
-              run_last = "▶▶";
-              terminate = "⏹";
-              disconnect = "⏏";
-            };
-          };
+        # Set icons to characters that are more likely to work in every terminal.
+        # Feel free to remove or use ones that you like more! :)
+        # Don't feel like these are good choices.
+        icons = {
+          expanded = "▾";
+          collapsed = "▸";
+          current_frame = "*";
         };
 
-        # Add your own debuggers here
-        dap-go = {
-          enable = true;
+        controls = {
+          icons = {
+            pause = "⏸";
+            play = "▶";
+            step_into = "⏎";
+            step_over = "⏭";
+            step_out = "⏮";
+            step_back = "b";
+            run_last = "▶▶";
+            terminate = "⏹";
+            disconnect = "⏏";
+          };
         };
       };
+
     };
 
     # https://nix-community.github.io/nixvim/keymaps/index.html
