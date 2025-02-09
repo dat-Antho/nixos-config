@@ -26,6 +26,7 @@
     pkgs.neofetch
     pkgs.lf
     pkgs.epy
+    pkgs.calibre
   ];
 
   imports = [
