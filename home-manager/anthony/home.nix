@@ -25,6 +25,7 @@
     pkgs.tldr
     pkgs.neofetch
     pkgs.lf
+    pkgs.epy
   ];
 
   imports = [
