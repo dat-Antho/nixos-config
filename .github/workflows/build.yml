@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Cache nix env take N+1
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             /nix/store/**
