@@ -22,4 +22,4 @@ jobs:
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel
+      - run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel --no-link
