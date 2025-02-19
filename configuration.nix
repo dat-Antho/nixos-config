@@ -72,6 +72,8 @@
   programs.zsh.enable = true;
   users.users.anthony.shell = pkgs.zsh;
 
+  networking.hostName = "zeno";
+
   # network
   networking.nameservers = [
     "1.1.1.1"
