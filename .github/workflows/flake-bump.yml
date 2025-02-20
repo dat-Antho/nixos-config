@@ -31,11 +31,9 @@ jobs:
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
-            # 显示变化的依赖
             git diff flake.lock
           fi
-          
-
+      # only rebuild if there is change in flake
       - name: Verify Configuration
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
