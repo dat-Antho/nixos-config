@@ -17,6 +17,11 @@ jobs:
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+      - name: Use Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: "datantho-nixos"
+          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
       - run: nix flake update
 
       - name: Check Changes
