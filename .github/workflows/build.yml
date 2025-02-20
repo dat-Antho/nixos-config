@@ -1,25 +1,25 @@
-name: Build NixOS Configuration
+# name: Build NixOS Configuration
 
-on:
-  push:
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["flake-bump"]
-    types:
-      - completed
+# on:
+#   push:
+#   workflow_dispatch:
+#   workflow_run:
+#     workflows: ["flake-bump"]
+#     types:
+#       - completed
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v25
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-      - name: Use Cachix
-        uses: cachix/cachix-action@v15
-        with:
-          name: "datantho-nixos"
-          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --eval-max-memory-size 16384 --flake .#nixosConfigurations.zeno.config.system.build.toplevel
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#       - uses: cachix/install-nix-action@v25
+#         with:
+#           nix_path: nixpkgs=channel:nixos-unstable
+#       - name: Use Cachix
+#         uses: cachix/cachix-action@v15
+#         with:
+#           name: "datantho-nixos"
+#           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
+#       - run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --eval-max-memory-size 16384 --flake .#nixosConfigurations.zeno.config.system.build.toplevel
