@@ -28,6 +28,7 @@
     pkgs.epy
     pkgs.calibre
     pkgs.cryptomator
+    pkgs.libnatpmp
   ];
 
   imports = [
