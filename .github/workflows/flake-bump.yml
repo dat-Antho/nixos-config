@@ -17,11 +17,6 @@ jobs:
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - name: Use Cachix
-        uses: cachix/cachix-action@v15
-        with:
-          name: "datantho-nixos"
-          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
       - run: nix flake update
 
       - name: Check Changes
@@ -33,7 +28,13 @@ jobs:
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
             git diff flake.lock
           fi
-      # only rebuild if there is change in flake
+      # enable cache and rebuild system if there are changes in flake.lock
+      - name: Use Cachix
+        uses: cachix/cachix-action@v15
+        if: steps.check_changes.outputs.has_changes == 'true'
+        with:
+          name: "datantho-nixos"
+          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: Verify Configuration
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
