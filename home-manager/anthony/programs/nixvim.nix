@@ -12,7 +12,6 @@
     ./plugins/mini.nix
     ./plugins/treesitter.nix
     ./plugins/precognition.nix
-    ./plugins/kickstart/plugins/debug.nix
     ./plugins/kickstart/plugins/indent-blankline.nix
     ./plugins/kickstart/plugins/lint.nix
     ./plugins/kickstart/plugins/autopairs.nix
