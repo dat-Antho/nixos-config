@@ -55,7 +55,7 @@ jobs:
       - name: Verify Configuration
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --eval-max-memory-size 16384 --flake .#nixosConfigurations.zeno.config.system.build.toplevel
+          nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake .#nixosConfigurations.zeno.config.system.build.toplevel
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
