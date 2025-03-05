@@ -19,6 +19,7 @@
     ./nixos-modules/audio.nix
     ./nixos-modules/syncthing.nix
     ./nixos-modules/nix.nix
+    ./nixos-modules/desktop-env.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -35,11 +36,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   # FLATPAK
   services.flatpak.enable = true;
   # RANDOM PROGRAMS
