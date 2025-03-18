@@ -5,10 +5,12 @@
     settings = {
       substituters = [
         "https://datantho-nixos.cachix.org?priority=1"
-        "https://cache.nixos.org?priority=2"
+        "https://cache.nixos.org?priority"
+        "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
         "datantho-nixos.cachix.org-1:7mXkZZm1vhW5N0xNuMaYQh/lipZKopDEHXKpcsiDWt8="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
