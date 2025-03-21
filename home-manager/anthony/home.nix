@@ -16,12 +16,10 @@
     pkgs.mpv
     pkgs.exfat
     pkgs.rclone
-    pkgs.qmk
     pkgs.vial
     pkgs.protonvpn-gui
     pkgs.qbittorrent
     pkgs.vdhcoapp
-    pkgs.easyeffects
     pkgs.tldr
     pkgs.neofetch
     pkgs.lf
@@ -30,6 +28,7 @@
     pkgs.cryptomator
     pkgs.libnatpmp
     pkgs.nh
+    pkgs.easyeffects
   ];
 
   imports = [
