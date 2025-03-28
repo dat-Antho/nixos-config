@@ -30,11 +30,12 @@ jobs:
           fi
       # enable cache and rebuild system if there are changes in flake.lock
       - name: Use Cachix
-        uses: cachix/cachix-action@v31
+        uses: cachix/cachix-action@v16
         if: steps.check_changes.outputs.has_changes == 'true'
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
+
     
       - name : clear storage
         if: steps.check_changes.outputs.has_changes == 'true'
