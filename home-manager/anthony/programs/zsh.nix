@@ -5,7 +5,7 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-    initExtraFirst = "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8";
+    initExtraFirst = "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8 export PATH=\"$HOME/bin:$PATH\"";
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";

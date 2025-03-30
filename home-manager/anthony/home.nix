@@ -29,7 +29,15 @@
     pkgs.libnatpmp
     pkgs.nh
     pkgs.easyeffects
+    pkgs.dig
+    pkgs.rofi-wayland
+    pkgs.libreoffice-still
   ];
+
+   home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
 
   imports = [
     ./programs
