@@ -4,7 +4,7 @@
   nix = {
     settings = {
       substituters = [
-        "https://datantho-nixos.cachix.org?priority=1"
+        "https://datantho-nixos.cachix.org"
         "https://cache.nixos.org?priority"
         "https://nix-community.cachix.org"
       ];
