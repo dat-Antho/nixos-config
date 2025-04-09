@@ -26,7 +26,6 @@
     pkgs.epy
     pkgs.calibre
     pkgs.cryptomator
-    pkgs.libnatpmp
     pkgs.nh
     pkgs.easyeffects
     pkgs.dig
