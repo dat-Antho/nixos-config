@@ -94,9 +94,14 @@
         };
         pylsp = {
           enable = true;
-        };
-        pyright = {
-          enable = true;
+          settings = {
+            plugins = {
+              yapf.enabled = false;
+              pyflakes.enabled = false;
+              autopep8.enabled = false;
+            };
+
+          };
         };
 
       };

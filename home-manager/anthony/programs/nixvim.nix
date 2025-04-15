@@ -16,11 +16,10 @@
     ./plugins/kickstart/plugins/lint.nix
     ./plugins/kickstart/plugins/autopairs.nix
     ./plugins/kickstart/plugins/neo-tree.nix
-    #
-    # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
-    # Add your plugins to ./plugins/custom/plugins and import them below
   ];
-
+  home.packages = [
+    pkgs.ripgrep
+  ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
