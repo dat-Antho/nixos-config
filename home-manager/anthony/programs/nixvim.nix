@@ -118,6 +118,8 @@
 
       # See `:help hlsearch`
       hlsearch = true;
+
+      colorcolumn = "80";
     };
 
     # [[ Basic Keymaps ]]
