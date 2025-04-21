@@ -31,6 +31,7 @@
     pkgs.dig
     pkgs.rofi-wayland
     pkgs.libreoffice-still
+    pkgs.gh
   ];
 
    home.sessionVariables = {
