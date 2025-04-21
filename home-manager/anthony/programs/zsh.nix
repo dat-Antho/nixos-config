@@ -13,7 +13,7 @@
       nrb = "nh os boot .";
       nrs = "nh os switch .";
       ghfb = "gh workflow run flake-bump";
-      ghfbl= "gh run list --workflow flake-bump.yml";
+      ghfbl = "gh run list --workflow flake-bump.yml";
     };
     history = {
       size = 10000;
