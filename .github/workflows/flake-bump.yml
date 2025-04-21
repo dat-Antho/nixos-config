@@ -1,7 +1,5 @@
 name: flake-bump
 on:
-  schedule:
-    - cron: "0 16 * * THU" 
   workflow_dispatch:
 
 jobs:
