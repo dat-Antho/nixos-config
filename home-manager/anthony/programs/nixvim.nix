@@ -12,6 +12,7 @@
     ./plugins/mini.nix
     ./plugins/treesitter.nix
     ./plugins/precognition.nix
+    ./plugins/markview.nix
     ./plugins/kickstart/plugins/indent-blankline.nix
     ./plugins/kickstart/plugins/lint.nix
     ./plugins/kickstart/plugins/autopairs.nix
@@ -19,6 +20,7 @@
   ];
   home.packages = [
     pkgs.ripgrep
+    pkgs.markdownlint-cli
   ];
   programs.nixvim = {
     enable = true;
