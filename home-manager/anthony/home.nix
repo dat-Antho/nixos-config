@@ -32,6 +32,7 @@
     pkgs.rofi-wayland
     pkgs.libreoffice-still
     pkgs.gh
+    pkgs.qFlipper
   ];
 
   home.sessionVariables = {
