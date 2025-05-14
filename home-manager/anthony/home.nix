@@ -33,6 +33,7 @@
     pkgs.libreoffice-still
     pkgs.gh
     pkgs.qFlipper
+    pkgs.protonup-qt
   ];
 
   home.sessionVariables = {
