@@ -37,9 +37,9 @@ jobs:
     
       - name : clear storage
         if: steps.check_changes.outputs.has_changes == 'true'
-      - uses: wimpysworld/nothing-but-nix@main
+        uses: wimpysworld/nothing-but-nix@main
         with:
-          hatchet-protocol: 'Carve'
+          hatchet-protocol: 'Holster'
       - name: Verify Configuration
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
