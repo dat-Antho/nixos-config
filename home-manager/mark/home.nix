@@ -16,6 +16,11 @@
     pkgs.git
   ];
 
+  home.file.".config/nix/nix.conf".text = ''
+  experimental-features = nix-command flakes
+  substituters = https://cache.nixos.org https://datantho-nixos.cachix.org
+  trusted-public-keys = datantho-nixos.cachix.org-1:7mXkZZm1vhW5N0xNuMaYQh/lipZKopDEHXKpcsiDWt8=
+  '';
   home.sessionVariables = {
     EDITOR = "nvim";
   };
