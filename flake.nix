@@ -1,42 +1,58 @@
 {
+  description = "Nixos and home-manager shared config";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      nixvim,
-    }:
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      nixosConfigurations = {
-        zeno = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.sharedModules = [
-                nixvim.homeManagerModules.nixvim
-              ];
-              home-manager.useUserPackages = true;
-              home-manager.users.anthony = import ./home-manager/anthony/home.nix;
-              home-manager.backupFileExtension = "hm-backup";
-            }
-          ];
 
+  outputs = { self, nixpkgs, home-manager, nixvim, ... }:
+    let
+      system = "x86_64-linux";
+
+      mkNixosHost = {
+        name,
+        user
+      }: nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./nixos-configs/${name}/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
+            home-manager.users.${user} = import ./home-manager/${user}/home.nix;
+          }
+        ];
+      };
+
+      mkHMOnly = name: home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { inherit system; };
+        modules = [ ./home-manager/${name}/home.nix ];
+      };
+    in {
+      nixosConfigurations = {
+        zeno = mkNixosHost {
+          name = "zeno";
+          user = "anthony";
         };
       };
+
+      homeConfigurations = {
+        vps-main = mkHMOnly "mark"; 
+      };
+
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
     };
-}
+} 
