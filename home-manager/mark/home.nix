@@ -18,7 +18,9 @@
 
   home.file.".config/nix/nix.conf".text = ''
   experimental-features = nix-command flakes
+  build-users-group = nixbld
   substituters = https://cache.nixos.org https://datantho-nixos.cachix.org
+  trusted-users = root anthony
   trusted-public-keys = datantho-nixos.cachix.org-1:7mXkZZm1vhW5N0xNuMaYQh/lipZKopDEHXKpcsiDWt8=
   '';
   home.sessionVariables = {
