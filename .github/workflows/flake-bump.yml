@@ -73,18 +73,12 @@ jobs:
         run: |
           case "${{ matrix.target }}" in
             zeno)
-              flake_attr="nixosConfigurations.zeno.config.system.build.toplevel"
+              nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link
               ;;
             mark)
-              flake_attr="homeConfigurations.mark.activationPackage"
-              ;;
-            *)
-              echo "❌ Unknown matrix target: ${{ matrix.target }}" >&2
-              exit 1
+              nix build .#homeConfigurations.mark.activationPackage --no-link
               ;;
           esac
-          echo "▶ Building .#${flake_attr}"
-          nix build ".#${flake_attr}" --no-link --accept-flake-config
   commit:
     needs: build
     if: needs.bump.outputs.has_changes == 'true'
