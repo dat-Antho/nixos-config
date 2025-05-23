@@ -2,6 +2,10 @@
 
 # Nixos config
 
+# Todo first : Enable flakes
+
+https://nixos.wiki/wiki/flakes
+
 # Home manager
 
 Think to set in /etc/nix/nix.conf
