@@ -39,7 +39,8 @@
 
       mkHMOnly = name: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { inherit system; };
-        modules = [ ./home-manager/${name}/home.nix ];
+        modules = [ ./home-manager/${name}/home.nix       
+          nixvim.homeManagerModules.nixvim];
       };
     in {
       nixosConfigurations = {
