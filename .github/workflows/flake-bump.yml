@@ -32,16 +32,18 @@ jobs:
       # enable cache and rebuild system if there are changes in flake.lock
       - name: Use Cachix
         uses: cachix/cachix-action@v16
-        #if: steps.check_changes.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true'
         with:
           name: "datantho-nixos"
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: Verify Configuration
-        #if: steps.check_changes.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-           nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link
+           nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link --accept-flake-config
+           echo "#####################"
            echo "Home-manager configs"
-           nix build .#homeConfigurations.mark.activationPackage --no-link
+           echo "#####################"
+           nix build .#homeConfigurations.mark.activationPackage --no-link --accept-flake-config
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
