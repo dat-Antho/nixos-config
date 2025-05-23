@@ -40,7 +40,7 @@ jobs:
         #if: steps.check_changes.outputs.has_changes == 'true'
         run: |
            nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link
-           nix build .#homeConfigurations.mark.activationPackage
+           nix build .#homeConfigurations.mark.activationPackage --no-link
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
