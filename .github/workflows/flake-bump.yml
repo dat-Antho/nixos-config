@@ -71,13 +71,20 @@ jobs:
   
       - name: Build ${{ matrix.target }}
         run: |
-         if [ "${{ matrix.target }}" = "zeno" ]; then
-          target="nixosConfigurations.zeno.config.system.build.toplevel"
-         else
-          target="homeConfigurations.${{ matrix.target }}.activationPackage"
-         fi
-         echo "▶ Building .#${target}"
-         nix build ".#${target}" --no-link --accept-flake-config
+          case "${{ matrix.target }}" in
+            zeno)
+              flake_attr="nixosConfigurations.zeno.config.system.build.toplevel"
+              ;;
+            mark)
+              flake_attr="homeConfigurations.mark.activationPackage"
+              ;;
+            *)
+              echo "❌ Unknown matrix target: ${{ matrix.target }}" >&2
+              exit 1
+              ;;
+          esac
+          echo "▶ Building .#${flake_attr}"
+          nix build ".#${flake_attr}" --no-link --accept-flake-config
   commit:
     needs: build
     if: needs.bump.outputs.has_changes == 'true'
