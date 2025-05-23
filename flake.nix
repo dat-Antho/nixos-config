@@ -19,6 +19,7 @@
     let
       system = "x86_64-linux";
 
+      # function to create a nixos configuration with home-manager
       mkNixosHost = {
         name,
         user
@@ -37,6 +38,7 @@
         ];
       };
 
+      # create only home-manager config
       mkHMOnly = name: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { inherit system; };
         modules = [ ./home-manager/${name}/home.nix       
