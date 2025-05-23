@@ -4,7 +4,7 @@
   nixConfig = {
       substituters = [
         "https://datantho-nixos.cachix.org"
-        "https://cache.nixos.org?priority"
+        "https://cache.nixos.org"
         "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
@@ -46,6 +46,7 @@
             home-manager.backupFileExtension = "hm-backup";
             home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
             home-manager.users.${user} = import ./home-manager/${user}/home.nix;
+            nix.settings.trusted-users = [ "root" ];
           }
         ];
       };
