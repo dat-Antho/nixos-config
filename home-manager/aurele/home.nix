@@ -19,8 +19,13 @@
    pkgs.mpv
    pkgs.cryptomator
    pkgs.localsend
+   pkgs.nh
   ];
 
+  home.shellAliases = {
+      nrb = "nh os boot . -- --accept-flake-config ";
+      nrs = "nh os switch . -- --accept-flake-config";
+  };
   home.sessionVariables = {
     EDITOR = "nvim";
   };
