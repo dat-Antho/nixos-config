@@ -21,6 +21,14 @@
    pkgs.localsend
    pkgs.nh
   ];
+  
+  programs.gnome-shell = {
+    enable = true;
+
+    extensions = with pkgs.gnomeExtensions; [
+      appindicator
+    ];
+  };
 
   home.shellAliases = {
       nrb = "nh os boot . -- --accept-flake-config ";
