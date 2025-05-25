@@ -3,7 +3,9 @@
 ## Nixos config
 
 Zeno : main pc
+
 Aurele : laptop 
+
 Mark : vps
 
 
