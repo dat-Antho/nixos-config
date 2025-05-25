@@ -46,7 +46,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
             home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
-            home-manager.users.${user} = import ./home-manager/${user}/home.nix;
+            home-manager.users.anthony = import ./home-manager/${user}/home.nix;
             nix.settings.trusted-users = [ "root" ];
           }
         ];
@@ -64,6 +64,10 @@
           name = "zeno";
           user = "anthony";
         };
+	aurele = mkNixosHost {
+	  name = "aurele";
+	  user = "aurele";
+	};
       };
 
       homeConfigurations = {
