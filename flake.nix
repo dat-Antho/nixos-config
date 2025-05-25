@@ -34,8 +34,9 @@
 
       # function to create a nixos configuration with home-manager
       mkNixosHost = {
-        name,
-        user
+        name, # represent the name of the system
+        user ? "anthony", # name of the main user
+        home-manager-directory # name of directory containing the desired home.nix
       }: nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -46,7 +47,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
             home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
-            home-manager.users.anthony = import ./home-manager/${user}/home.nix;
+            home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
             nix.settings.trusted-users = [ "root" ];
           }
         ];
@@ -62,11 +63,11 @@
       nixosConfigurations = {
         zeno = mkNixosHost {
           name = "zeno";
-          user = "anthony";
+          home-manager-directory = "anthony";
         };
 	aurele = mkNixosHost {
 	  name = "aurele";
-	  user = "aurele";
+	  home-manager-directory = "aurele";
 	};
       };
 
