@@ -14,8 +14,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.throttled.enable = lib.mkDefault true;
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "aurele"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
