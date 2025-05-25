@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [zeno, mark]
+        target: [zeno, mark, aurele]
     steps:
       - uses: actions/checkout@v4
   
@@ -74,6 +74,9 @@ jobs:
           case "${{ matrix.target }}" in
             zeno)
               nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link 
+              ;;
+            aurele)
+              nix build .#nixosConfigurations.aurele.config.system.build.toplevel --no-link 
               ;;
             mark)
               nix build .#homeConfigurations.mark.activationPackage --no-link 

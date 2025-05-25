@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,lib, ... }:
 
 {
   imports =
@@ -16,7 +16,6 @@
   services.throttled.enable = lib.mkDefault true;
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "aurele"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

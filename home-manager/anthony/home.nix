@@ -17,8 +17,6 @@
     pkgs.exfat
     pkgs.rclone
     pkgs.vial
-    pkgs.protonvpn-gui
-    pkgs.qbittorrent
     pkgs.vdhcoapp
     pkgs.tldr
     pkgs.neofetch

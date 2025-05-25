@@ -13,7 +13,12 @@
 	../anthony/programs/nixvim.nix
   ];
   home.packages = [
-    pkgs.git
+   pkgs.protonvpn-gui
+   pkgs.qbittorrent
+   pkgs.git
+   pkgs.mpv
+   pkgs.cryptomator
+   pkgs.localsend
   ];
 
   home.sessionVariables = {
