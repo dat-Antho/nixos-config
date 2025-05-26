@@ -18,7 +18,6 @@
    pkgs.git
    pkgs.mpv
    pkgs.cryptomator
-   pkgs.localsend
    pkgs.nh
   ];
   

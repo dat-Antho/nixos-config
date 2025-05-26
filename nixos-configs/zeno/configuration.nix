@@ -39,7 +39,7 @@
   # FLATPAK
   services.flatpak.enable = true;
   # RANDOM PROGRAMS
-  programs.localsend.enable = true; # airdrop alternative
+  programs.localsend.enable = true; # airdrop alternative, needs to be here for firewall autoconfig
   programs.gamemode.enable = true;
   programs.partition-manager.enable = true;
   # Configure keymap in X11
