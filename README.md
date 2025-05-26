@@ -16,7 +16,7 @@ Revan : vps
 https://nixos.wiki/wiki/flakes
 
 
-# Home manager only
+# Home manager only systems
 
 Think to set in /etc/nix/nix.conf
 ```
