@@ -21,6 +21,7 @@
     ./nixos-modules/desktop-env.nix
     ../common-modules/nix.nix
     ../common-modules/ssh-agent.nix
+    ../common-modules/dns.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -71,13 +72,6 @@
 
   networking.hostName = "zeno";
 
-  # network
-  networking.nameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-    "2606:4700:4700::1111"
-    "2606:4700:4700::1001"
-  ];
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../common-modules/nix.nix
       ../common-modules/ssh-agent.nix
+      ../common-modules/dns.nix
     ];
 
   # Bootloader.
