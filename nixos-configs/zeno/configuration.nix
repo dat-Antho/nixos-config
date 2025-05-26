@@ -14,12 +14,12 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../nixos-modules/nvidia.nix
-    ../../nixos-modules/steam.nix
-    ../../nixos-modules/audio.nix
-    ../../nixos-modules/syncthing.nix
-    ../../nixos-modules/nix.nix
-    ../../nixos-modules/desktop-env.nix
+    ../nixos-modules/nvidia.nix
+    ../nixos-modules/steam.nix
+    ../nixos-modules/audio.nix
+    ../nixos-modules/syncthing.nix
+    ../nixos-modules/nix.nix
+    ../nixos-modules/desktop-env.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
