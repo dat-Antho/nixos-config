@@ -8,6 +8,8 @@ Aurele : laptop
 
 Mark : vps
 
+Revan : vps
+
 
 # Todo first : Enable flakes
 
