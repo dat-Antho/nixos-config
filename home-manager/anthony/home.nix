@@ -4,7 +4,6 @@
   home.homeDirectory = "/home/anthony";
   home.stateVersion = "24.05";
   home.packages = [
-    pkgs.git
     pkgs.htop
     pkgs.discord
     pkgs.filezilla
@@ -41,6 +40,10 @@
 
   imports = [
     ./programs
+    ../common/programs/git.nix
+    ../common/programs/nixvim.nix
+    ../common/programs/zoxide.nix
+  
   ];
 
 }

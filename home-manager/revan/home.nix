@@ -29,7 +29,7 @@
     pkgs.glab
   ];
   imports = [
-    ../anthony/programs/nixvim.nix
+    ../common/programs/nixvim.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -10,7 +10,7 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
-	../anthony/programs/nixvim.nix
+	../common/programs/nixvim.nix
   ];
   home.packages = [
    pkgs.protonvpn-gui
