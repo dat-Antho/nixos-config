@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../common-modules/nix.nix
+      ../common-modules/ssh-agent.nix
     ];
 
   # Bootloader.
@@ -16,7 +18,6 @@
   services.throttled.enable = lib.mkDefault true;
   networking.hostName = "aurele"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -95,8 +96,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
