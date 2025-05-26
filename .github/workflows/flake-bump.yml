@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [zeno, mark, aurele]
+        target: [zeno, mark, aurele, revan]
     steps:
       - uses: actions/checkout@v4
   
@@ -80,6 +80,9 @@ jobs:
               ;;
             mark)
               nix build .#homeConfigurations.mark.activationPackage --no-link 
+              ;;
+            revan)
+              nix build .#homeConfigurations.revan.activationPackage --no-link 
               ;;
           esac
   commit:
