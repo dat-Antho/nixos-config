@@ -72,7 +72,8 @@
       };
 
       homeConfigurations = {
-        mark = mkHMOnly "mark"; 
+        mark = mkHMOnly "mark";
+	revan = mkHMOnly "revan";
       };
 
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
