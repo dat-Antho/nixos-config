@@ -70,7 +70,7 @@ jobs:
         run: nix build .#homeConfigurations.${{ matrix.target }}.activationPackage --no-link 
        
     
-build-nixos:
+  build-nixos:
     needs: bump
     if: needs.bump.outputs.has_changes == 'true'
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ build-nixos:
   
       - name: Build ${{ matrix.target }}
         run: nix build .#nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel --no-link 
-        
+    
   commit:
     needs: [build-home-manager,build-nixos]
     permissions:
