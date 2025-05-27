@@ -38,13 +38,45 @@ jobs:
           path: flake.lock
 
   
-  build:
+  build-home-manager:
     needs: bump
     if: needs.bump.outputs.has_changes == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [zeno, mark, aurele, revan]
+        target: [mark, revan]
+    steps:
+      - uses: actions/checkout@v4
+  
+      - name: Download updated flake.lock
+        uses: actions/download-artifact@v4
+        with:
+          name: flake-lock
+          path: .
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+  
+      - name: Use Cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: datantho-nixos
+          authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
+  
+      - name: Build ${{ matrix.target }}
+        run: nix build .#homeConfigurations.${{ matrix.target }}.activationPackage --no-link 
+       
+    
+build-nixos:
+    needs: bump
+    if: needs.bump.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [zeno, aurele]
     steps:
       - uses: actions/checkout@v4
   
@@ -70,23 +102,10 @@ jobs:
           authToken: ${{ secrets.CACHIX_SIGNING_KEY }}
   
       - name: Build ${{ matrix.target }}
-        run: |
-          case "${{ matrix.target }}" in
-            zeno)
-              nix build .#nixosConfigurations.zeno.config.system.build.toplevel --no-link 
-              ;;
-            aurele)
-              nix build .#nixosConfigurations.aurele.config.system.build.toplevel --no-link 
-              ;;
-            mark)
-              nix build .#homeConfigurations.mark.activationPackage --no-link 
-              ;;
-            revan)
-              nix build .#homeConfigurations.revan.activationPackage --no-link 
-              ;;
-          esac
+        run: nix build .#nixosConfigurations.${{ matrix.target }}.config.system.build.toplevel --no-link 
+        
   commit:
-    needs: build
+    needs: [build-home-manager,build-nixos]
     permissions:
       contents: write
     if: needs.bump.outputs.has_changes == 'true'
