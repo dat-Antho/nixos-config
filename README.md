@@ -49,4 +49,4 @@ cp -r ~/iPhone/DCIM ~/Pictures/iPhone_Backup
 
 # 6. Unmount when done
 fusermount -u ~/iPhone
-``
+
