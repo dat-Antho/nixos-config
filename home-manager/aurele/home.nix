@@ -11,12 +11,12 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
 	../common/programs/nixvim.nix
+	../common/programs/mpv.nix
   ];
   home.packages = [
    pkgs.protonvpn-gui
    pkgs.qbittorrent
    pkgs.git
-   pkgs.mpv
    pkgs.cryptomator
    pkgs.nh
   ];

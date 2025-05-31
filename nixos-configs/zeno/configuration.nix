@@ -22,6 +22,7 @@
     ../common-modules/nix.nix
     ../common-modules/ssh-agent.nix
     ../common-modules/dns.nix
+    ../common-modules/usbmux.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

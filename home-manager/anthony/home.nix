@@ -12,7 +12,6 @@
     pkgs.discord
     pkgs.thunderbird
     pkgs.wget
-    pkgs.mpv
     pkgs.exfat
     pkgs.rclone
     pkgs.vial
@@ -31,6 +30,11 @@
     pkgs.gh
     pkgs.qFlipper
     pkgs.protonup-qt
+    # --- useful to plug phone and get the photos
+    pkgs.ifuse
+    pkgs.libimobiledevice
+    pkgs.gvfs
+    # ---
   ];
 
   home.sessionVariables = {
@@ -43,6 +47,7 @@
     ../common/programs/git.nix
     ../common/programs/nixvim.nix
     ../common/programs/zoxide.nix
+    ../common/programs/mpv.nix
   
   ];
 
