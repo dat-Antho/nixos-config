@@ -29,3 +29,24 @@ trusted-users = root anthony # set correct username here
 - move /etc/nix/nixos/* into the nixos-configs directory
 - update the flake to configure the nixos system
 - nixos-rebuild switch --flake .#aurele (example to build aurele)
+
+
+### Get photos from ios 
+```
+# 1. Create a mount point
+mkdir -p ~/iPhone
+
+# 2. Plug in and unlock your iPhone
+
+# 3. Pair your device (trust prompt will appear on iPhone)
+idevicepair pair
+
+# 4. Mount the iPhone
+ifuse ~/iPhone
+
+# 5. Copy photos to your local folder
+cp -r ~/iPhone/DCIM ~/Pictures/iPhone_Backup
+
+# 6. Unmount when done
+fusermount -u ~/iPhone
+``
