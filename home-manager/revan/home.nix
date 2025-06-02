@@ -27,6 +27,13 @@
     pkgs.tldr
     pkgs.lazygit
     pkgs.glab
+    pkgs.gcc
+    pkgs.stdenv.cc.cc.lib
+    pkgs.libgcc
+    pkgs.gnumake
+    pkgs.cmake
+    pkgs.extra-cmake-modules
+    pkgs.zlib
   ];
   imports = [
     ../common/programs/nixvim.nix
@@ -49,6 +56,7 @@
 
   home.sessionVariables = {
      EDITOR = "nvim";
+     LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
   };
 
   # Let Home Manager install and manage itself.
