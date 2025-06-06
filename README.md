@@ -2,9 +2,12 @@
 
 ## Nixos config
 
+### Nixos 
 Zeno : main pc
 
 Aurele : laptop 
+
+### Home-manager
 
 Mark : vps
 
