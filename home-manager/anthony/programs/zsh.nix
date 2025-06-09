@@ -5,7 +5,8 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-    initContent = lib.mkBefore "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8 export PATH=\"$HOME/bin:$PATH\"\n autoload -Uz compinit\ncompinit -C\n "; 
+    # initContent = lib.mkBefore "export LANG=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8 export PATH=\"$HOME/bin:$PATH\"\n autoload -Uz compinit\ncompinit -C\n "; 
+    initContent = lib.mkBefore "export PATH=\"$HOME/bin:$PATH\"\n autoload -Uz compinit\ncompinit -C\n "; 
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
