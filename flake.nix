@@ -16,7 +16,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +29,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... }:
+  outputs = { self, nixpkgs, home-manager, nixvim,disko, ... }:
     let
       system = "x86_64-linux";
 
@@ -36,7 +37,8 @@
       mkNixosHost = {
         name, # represent the name of the system
         user ? "anthony", # name of the main user
-        home-manager-directory # name of directory containing the desired home.nix
+        home-manager-directory, # name of directory containing the desired home.nix
+        extraModules ? []
       }: nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -50,7 +52,7 @@
             home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
             nix.settings.trusted-users = [ "root" user];
           }
-        ];
+        ]++ extraModules;
       };
 
       # create only home-manager config
@@ -69,10 +71,14 @@
 	  name = "aurele";
 	  home-manager-directory = "aurele";
 	};
+        mark = mkNixosHost {
+	  name = "mark";
+	  home-manager-directory = "mark";
+        extraModules = [disko.nixosModules.disko];
+	};
       };
 
       homeConfigurations = {
-        mark = mkHMOnly "mark";
 	revan = mkHMOnly "revan";
       };
 

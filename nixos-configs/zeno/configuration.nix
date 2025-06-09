@@ -17,12 +17,12 @@
     ./nixos-modules/nvidia.nix
     ./nixos-modules/steam.nix
     ./nixos-modules/audio.nix
-    ./nixos-modules/syncthing.nix
     ./nixos-modules/desktop-env.nix
     ../common-modules/nix.nix
     ../common-modules/ssh-agent.nix
     ../common-modules/dns.nix
     ../common-modules/usbmux.nix
+    ../common-modules/syncthing.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

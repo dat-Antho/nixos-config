@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [mark, revan]
+        target: [revan]
     steps:
       - uses: actions/checkout@v4
   
@@ -71,12 +71,12 @@ jobs:
        
     
   build-nixos:
-    needs: bump
+    needs: build-home-manager
     if: needs.bump.outputs.has_changes == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [zeno, aurele]
+        target: [zeno, aurele, mark]
     steps:
       - uses: actions/checkout@v4
   
