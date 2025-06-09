@@ -33,9 +33,7 @@
   boot.kernelPackages = pkgs.linuxPackages_6_15;
   hardware.keyboard.qmk.enable = true;
 
-  time.timeZone = "Europe/Amsterdam";
-  services.ntp.enable = true;
-   networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
