@@ -35,6 +35,7 @@
     pkgs.libimobiledevice
     pkgs.gvfs
     # ---
+    pkgs.protonvpn-gui
   ];
 
   home.sessionVariables = {
