@@ -7,9 +7,9 @@ Zeno : main pc
 
 Aurele : laptop 
 
+Mark : vps
 ### Home-manager
 
-Mark : vps
 
 Revan : dev vm
 
