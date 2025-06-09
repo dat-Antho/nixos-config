@@ -23,6 +23,7 @@
     ../common-modules/dns.nix
     ../common-modules/usbmux.nix
     ../common-modules/syncthing.nix
+    ../common-modules/ntp.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -34,8 +35,7 @@
 
   time.timeZone = "Europe/Amsterdam";
   services.ntp.enable = true;
-  networking.timeServers = options.networking.timeServers.default ++ [ "0.fr.pool.ntp.org" ];
-  networking.networkmanager.enable = true;
+   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
