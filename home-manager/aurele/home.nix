@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
 
@@ -10,21 +12,20 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
-	../common/programs/nixvim.nix
-	../common/programs/mpv.nix
+    ../common/programs/nixvim.nix
+    ../common/programs/mpv.nix
   ];
   home.packages = [
-   pkgs.protonvpn-gui
-   pkgs.qbittorrent
-   pkgs.git
-   pkgs.cryptomator
-   pkgs.nh
+    pkgs.protonvpn-gui
+    pkgs.qbittorrent
+    pkgs.git
+    pkgs.cryptomator
+    pkgs.nh
   ];
-  
 
   home.shellAliases = {
-      nrb = "nh os boot . -- --accept-flake-config ";
-      nrs = "nh os switch . -- --accept-flake-config";
+    nrb = "nh os boot . -- --accept-flake-config ";
+    nrs = "nh os switch . -- --accept-flake-config";
   };
   home.sessionVariables = {
     EDITOR = "nvim";

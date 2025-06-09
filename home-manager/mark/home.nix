@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
 
@@ -10,7 +12,7 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
-	../common/programs/nixvim.nix
+    ../common/programs/nixvim.nix
   ];
   home.packages = [
     pkgs.git

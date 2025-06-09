@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.kitty = {
     enable = true;
     themeFile = "gruvbox-dark-hard";
@@ -12,5 +15,4 @@
       enable_audio_bell = false;
     };
   };
-
 }

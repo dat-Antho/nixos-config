@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
 {
-
-    nix.settings.experimental-features = [
+  config,
+  pkgs,
+  ...
+}: {
+  nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
@@ -16,5 +18,4 @@
     dates = "weekly";
     options = "--delete-older-than 15d";
   };
-
 }

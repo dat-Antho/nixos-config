@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ahengy";
@@ -55,8 +57,8 @@
   };
 
   home.sessionVariables = {
-     EDITOR = "nvim";
-     LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    EDITOR = "nvim";
+    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
   };
 
   # Let Home Manager install and manage itself.

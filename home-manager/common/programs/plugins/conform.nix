@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.nixvim = {
     # Dependencies
     #
@@ -29,9 +28,9 @@
           end
         '';
         formatters_by_ft = {
-          lua = [ "stylua" ];
+          lua = ["stylua"];
           # Conform can also run multiple formatters sequentially
-          python = [ "black" ];
+          python = ["black"];
           #
           # You can use a sublist to tell conform to run *until* a formatter
           # is found

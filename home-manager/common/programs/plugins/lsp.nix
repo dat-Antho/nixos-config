@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.nixvim = {
     # Dependencies
     # { 'Bilal2453/luvit-meta', lazy = true },
@@ -100,10 +99,8 @@
               pyflakes.enabled = false;
               autopep8.enabled = false;
             };
-
           };
         };
-
       };
 
       keymaps = {

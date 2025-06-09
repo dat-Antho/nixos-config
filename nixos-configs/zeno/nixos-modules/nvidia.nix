@@ -1,12 +1,13 @@
-{ config, pkgs, ... }:
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   hardware.graphics.enable = true; # Whether to enable hardware accelerated graphics drivers
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.udev.packages = [ pkgs.via ];
+  services.xserver.videoDrivers = ["nvidia"];
+  services.udev.packages = [pkgs.via];
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.

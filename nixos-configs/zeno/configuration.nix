@@ -1,16 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 {
   config,
   lib,
   pkgs,
   options,
   ...
-}:
-
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -38,16 +35,16 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-  LC_ADDRESS = "fr_FR.UTF-8";
-  LC_IDENTIFICATION = "fr_FR.UTF-8";
-  LC_MEASUREMENT = "fr_FR.UTF-8";
-  LC_MONETARY = "fr_FR.UTF-8";
-  LC_NAME = "fr_FR.UTF-8";
-  LC_NUMERIC = "fr_FR.UTF-8";
-  LC_PAPER = "fr_FR.UTF-8";
-  LC_TELEPHONE = "fr_FR.UTF-8";
-  LC_TIME = "fr_FR.UTF-8";
-};
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
+  };
   # FLATPAK
   services.flatpak.enable = true;
   # RANDOM PROGRAMS
@@ -63,7 +60,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anthony = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     initialPassword = "test";
     packages = with pkgs; [
       firefox
@@ -99,5 +96,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

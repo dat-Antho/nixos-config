@@ -1,14 +1,17 @@
-{ config, pkgs,lib, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../common-modules/nix.nix
-      ../common-modules/ssh-agent.nix
-      ../common-modules/dns.nix
-      ../common-modules/ntp.nix
-    ];
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../common-modules/nix.nix
+    ../common-modules/ssh-agent.nix
+    ../common-modules/dns.nix
+    ../common-modules/ntp.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -84,10 +87,10 @@
   users.users.anthony = {
     isNormalUser = true;
     description = "Anthony";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-     firefox
-     keepassxc
+      firefox
+      keepassxc
     ];
   };
 
@@ -100,5 +103,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
