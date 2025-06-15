@@ -36,6 +36,7 @@
     pkgs.cmake
     pkgs.extra-cmake-modules
     pkgs.zlib
+    pkgs.nh
   ];
   imports = [
     ../common/programs/nixvim.nix

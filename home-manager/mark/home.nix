@@ -16,6 +16,7 @@
   ];
   home.packages = [
     pkgs.git
+    pkgs.nh
   ];
 
   home.sessionVariables = {
