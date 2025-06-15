@@ -17,6 +17,7 @@
   inputs = {
     alejandra.url = "github:kamadorueda/alejandra";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
@@ -37,6 +38,7 @@
     nixvim,
     disko,
     alejandra,
+    chaotic,
     ...
   }: let
     system = "x86_64-linux";
@@ -79,6 +81,7 @@
       zeno = mkNixosHost {
         name = "zeno";
         home-manager-directory = "anthony";
+        extraModules = [chaotic.nixosModules.default];
       };
       aurele = mkNixosHost {
         name = "aurele";
