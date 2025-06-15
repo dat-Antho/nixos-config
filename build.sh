@@ -24,7 +24,7 @@ setup_cachix() {
 }
 
 ##################################
-# Home Manager Build (safe array expansion)
+# Home Manager Build
 ##################################
 
 build_home_manager() {
@@ -44,7 +44,7 @@ build_home_manager() {
 }
 
 ##################################
-# NixOS Build (safe array expansion)
+# NixOS Build 
 ##################################
 
 build_nixos() {
