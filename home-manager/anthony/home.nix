@@ -39,6 +39,7 @@
     pkgs.gvfs
     # ---
     pkgs.protonvpn-gui
+    pkgs.teamspeak3
   ];
 
   home.sessionVariables = {
