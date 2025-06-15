@@ -18,11 +18,23 @@ setup_cachix() {
     echo "🔐 Enabling Cachix for $CACHIX_NAME"
     cachix authtoken "$CACHIX_AUTH_TOKEN"
     cachix use "$CACHIX_NAME"
+    echo "🚀 Starting Cachix watch-store"
+    cachix watch-store "$CACHIX_NAME" &
+    export WATCH_PID=$!
   else
     echo "ℹ️ Cachix not enabled (missing environment variables)"
   fi
 }
 
+cleanup_cachix() {
+  if [[ -n "${WATCH_PID:-}" ]]; then
+    echo "🧹 Stopping Cachix watch-store"
+    kill "$WATCH_PID"
+  fi
+}
+
+
+trap cleanup_cachix EXIT
 ##################################
 # Home Manager Build
 ##################################
@@ -40,7 +52,7 @@ build_home_manager() {
     args+=(".#homeConfigurations.${user}.activationPackage")
   done
 
-  nix build -v "${args[@]}" --no-link 
+  nix build "${args[@]}" --no-link 
 }
 
 ##################################
@@ -60,7 +72,7 @@ build_nixos() {
     args+=(".#nixosConfigurations.${host}.config.system.build.toplevel")
   done
 
-  nix build -v "${args[@]}" --no-link 
+  nix build "${args[@]}" --no-link 
 }
 
 ##################################
