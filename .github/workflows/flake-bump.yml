@@ -23,7 +23,7 @@ jobs:
           witness-carnage: true
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v31
+        uses: DeterminateSystems/nix-installer-action@main
       - name: Install Cachix
         run: nix profile install nixpkgs#cachix 
       - name: Run flake bump
