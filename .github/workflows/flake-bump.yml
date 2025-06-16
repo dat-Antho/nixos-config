@@ -20,6 +20,7 @@ jobs:
       - uses: wimpysworld/nothing-but-nix@main
         with:
           hatchet-protocol: 'Cleave'
+          witness-carnage: true
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
