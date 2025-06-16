@@ -29,7 +29,6 @@ jobs:
         id: bump
         run: |
           ./flake-bump.sh
-        continue-on-error: true
 
       - name: Build if flake-bump updated
         if: steps.bump.outputs.changed == 'true'
