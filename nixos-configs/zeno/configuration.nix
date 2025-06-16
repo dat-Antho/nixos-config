@@ -27,7 +27,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0n1p1";
   # Use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   hardware.keyboard.qmk.enable = true;
 
   networking.networkmanager.enable = true;
