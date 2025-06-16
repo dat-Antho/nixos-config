@@ -53,7 +53,7 @@ build_home_manager() {
     args+=(".#homeConfigurations.${user}.activationPackage")
   done
 
-  nix build "${args[@]}" --no-link 
+  nix build --no-link "${args[@]}"  
 }
 
 ##################################
@@ -73,7 +73,7 @@ build_nixos() {
     args+=(".#nixosConfigurations.${host}.config.system.build.toplevel")
   done
 
-  nix build "${args[@]}" --no-link 
+  nix build --no-link --max-jobs 2 "${args[@]}" 
 }
 
 ##################################
@@ -87,6 +87,7 @@ main() {
   SECONDS=0
 
   build_home_manager
+  nix store gc
   build_nixos
 
   duration=$SECONDS
