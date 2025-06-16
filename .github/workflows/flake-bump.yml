@@ -32,6 +32,7 @@ jobs:
 
       - name: Build if flake-bump updated
         if: steps.bump.outputs.changed == 'true'
+        continue-on-error: true
         run: ./build.sh
 
       - name: Auto commit updated flake.lock
