@@ -60,6 +60,7 @@ build_home_manager() {
   done
 
   nix build --no-link "${args[@]}"  
+  cleanup_store
 }
 
 ##################################
