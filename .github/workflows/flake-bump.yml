@@ -32,11 +32,11 @@ jobs:
         continue-on-error: true
 
       - name: Build if flake-bump updated
-        if: steps.bump.outcome == 'failure'
+        if: steps.bump.outputs.changed == 'true'
         run: ./build.sh
 
       - name: Auto commit updated flake.lock
-        if: steps.bump.outcome == 'failure'
+        if: steps.bump.outputs.changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
