@@ -36,6 +36,12 @@ cleanup_cachix() {
 
 
 trap cleanup_cachix EXIT
+
+cleanup_store() {
+  echo "🧹 Running Nix GC to free disk space"
+  nix store gc || true
+}
+
 ##################################
 # Home Manager Build
 ##################################
@@ -66,14 +72,12 @@ build_nixos() {
     return
   fi
 
-  echo "🖥️ Building NixOS configurations:"
-  local args=()
   for host in "${NIXOS_TARGETS[@]}"; do
-    echo "  🔧 .#nixosConfigurations.${host}.config.system.build.toplevel"
-    args+=(".#nixosConfigurations.${host}.config.system.build.toplevel")
+    echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
+    nix build --no-link ".#nixosConfigurations.${host}.config.system.build.toplevel"
+    cleanup_store
   done
 
-  nix build --no-link --max-jobs 2 "${args[@]}" 
 }
 
 ##################################
@@ -87,7 +91,6 @@ main() {
   SECONDS=0
 
   build_home_manager
-  nix store gc
   build_nixos
 
   duration=$SECONDS
