@@ -29,8 +29,7 @@ setup_cachix() {
 cleanup_cachix() {
   if [[ -n "${WATCH_PID:-}" ]]; then
     echo "🧹 Stopping Cachix watch-store"
-    kill -INT "$WATCH_PID" || true
-    wait "$WATCH_PID"
+    wait "$WATCH_PID" 2>/dev/null || true
   fi
 }
 
