@@ -59,7 +59,7 @@ build_home_manager() {
   done
 
   nix build --max-jobs 2  --no-link "${args[@]}"  
-  cleanup_store &
+  cleanup_store
 }
 
 ##################################
@@ -75,7 +75,7 @@ build_nixos() {
   for host in "${NIXOS_TARGETS[@]}"; do
     echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
     nix build --max-jobs 2  --no-link ".#nixosConfigurations.${host}.config.system.build.toplevel"
-    cleanup_store &
+    cleanup_store
   done
 
 }
