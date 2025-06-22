@@ -7,7 +7,8 @@
   pkgs,
   options,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -22,6 +23,20 @@
     ../common-modules/syncthing.nix
     ../common-modules/ntp.nix
   ];
+
+  stylix = {
+    enable = true;
+    targets.kitty.enable = true;
+    targets.nixvim.enable = false;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+    };
+  };
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -60,7 +75,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anthony = {
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     initialPassword = "test";
     packages = with pkgs; [
       firefox
@@ -70,9 +85,6 @@
       steam-run
     ];
   };
-  fonts.packages = [
-    pkgs.nerd-fonts.jetbrains-mono
-  ];
   programs.zsh.enable = true;
   users.users.anthony.shell = pkgs.zsh;
 
