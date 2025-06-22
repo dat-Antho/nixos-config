@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
   home.stateVersion = "24.05";
@@ -39,6 +40,7 @@
     pkgs.gvfs
     # ---
     pkgs.protonvpn-gui
+    pkgs.wineWowPackages.stable
     pkgs.teamspeak3
   ];
 
