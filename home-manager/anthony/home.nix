@@ -23,7 +23,6 @@
     pkgs.tldr
     pkgs.neofetch
     pkgs.lf
-    pkgs.epy
     pkgs.calibre
     pkgs.cryptomator
     pkgs.nh
