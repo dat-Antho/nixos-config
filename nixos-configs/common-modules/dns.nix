@@ -47,6 +47,11 @@
           default = [ "ads" ];
         };
       };
+      caching = {
+        minTime = "5m";
+        maxTime = "30m";
+        prefetching = true;
+      };
     };
   };
 }
