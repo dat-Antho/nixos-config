@@ -34,7 +34,9 @@
   services.blocky = {
     enable = true;
     settings = {
-      bootstrapDns = "1.1.1.1"; # use at service startup
+      # use at service startup, if it's not set we get dns error
+      # bootstrapdns !== upstreams dns
+      bootstrapDns = "1.1.1.1";
       ports.dns = 53;
       upstreams.groups.default = [ "127.0.0.1:5353" ];
       blocking = {
