@@ -13,7 +13,6 @@
   networking.networkmanager.dns = lib.mkForce "none";
   services.dnscrypt-proxy2 = {
     enable = true;
-
     settings = {
       listen_addresses = [ "127.0.0.1:5353" ]; # custom port
       ipv4_servers = true;
@@ -22,6 +21,10 @@
       require_nofilter = true;
       doh_servers = true;
       dnscrypt_servers = true;
+      cache = true;
+      cache_size = 4096;
+      cache_min_ttl = 240;
+      cache_max_ttl = 86400;
 
       # You can choose resolvers from https://dnscrypt.info/public-servers
       server_names = [
@@ -53,5 +56,7 @@
         prefetching = true;
       };
     };
+
   };
+
 }
