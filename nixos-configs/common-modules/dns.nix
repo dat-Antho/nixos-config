@@ -14,7 +14,7 @@
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
-      listen_addresses = [ "127.0.0.1:5353" ]; # custom port
+      listen_addresses = [ "127.0.0.1:5300" ]; # custom port
       ipv4_servers = true;
       require_dnssec = true;
       require_nolog = true;
@@ -41,7 +41,7 @@
       # bootstrapdns !== upstreams dns
       bootstrapDns = "1.1.1.1";
       ports.dns = 53;
-      upstreams.groups.default = [ "127.0.0.1:5353" ];
+      upstreams.groups.default = [ "127.0.0.1:5300" ];
       blocking = {
         denylists = {
           ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ];
