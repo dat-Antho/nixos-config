@@ -27,7 +27,7 @@
         ]
       },
       "locked": {
-        "lastModified": 1750903843,
+        "lastModified": 1751854533,
         "narHash": "sha256-U/OQFplExOR1jazZY4KkaQkJqOl59xlh21HP9mI79Vc=",
         "owner": "nix-community",
         "repo": "disko",
