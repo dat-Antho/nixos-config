@@ -46,7 +46,7 @@ build_home_manager() {
     args+=(".#homeConfigurations.${user}.activationPackage")
   done
 
-  nix build --max-jobs 2  --no-link "${args[@]}"
+  nix build --max-jobs 2 "${args[@]}"  --out-link ./result
   nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
   cleanup_store
 }
@@ -63,7 +63,7 @@ build_nixos() {
 
   for host in "${NIXOS_TARGETS[@]}"; do
     echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
-    nix build --max-jobs 2  --no-link ".#nixosConfigurations.${host}.config.system.build.toplevel"
+    nix build --max-jobs 2  ".#nixosConfigurations.${host}.config.system.build.toplevel" --out-link ./result
     nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
     cleanup_store
   done
