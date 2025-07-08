@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -18,6 +19,7 @@
       nrb = "nh os boot . -- --accept-flake-config ";
       nrs = "nh os switch . -- --accept-flake-config";
       ghfb = "gh workflow run flake-bump";
+      ssh = "kitty +kitten ssh";
       ghfbl = "gh run list --workflow flake-bump.yml";
     };
     history = {
@@ -27,11 +29,11 @@
     zplug = {
       enable = true;
       plugins = [
-        {name = "zsh-users/zsh-autosuggestions";}
-        {name = "MichaelAquilina/zsh-you-should-use";}
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "MichaelAquilina/zsh-you-should-use"; }
         {
           name = "mafredri/zsh-async";
-          tags = ["from:github"];
+          tags = [ "from:github" ];
         }
         {
           name = "sindresorhus/pure";

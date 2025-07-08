@@ -32,7 +32,7 @@
 
     bantime = "10m";
 
-    banaction = "nftables-multiport";
+    banaction = "iptables-multiport";
 
     maxretry = 3;
 
