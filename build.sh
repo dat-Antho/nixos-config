@@ -18,23 +18,11 @@ setup_cachix() {
     echo "🔐 Enabling Cachix for $CACHIX_NAME"
     cachix authtoken "$CACHIX_AUTH_TOKEN"
     cachix use "$CACHIX_NAME"
-    echo "🚀 Starting Cachix watch-store"
-    cachix watch-store "$CACHIX_NAME" &
-    export WATCH_PID=$!
   else
     echo "ℹ️ Cachix not enabled (missing environment variables)"
   fi
 }
 
-cleanup_cachix() {
-  if [[ -n "${WATCH_PID:-}" ]]; then
-    echo "🧹 Stopping Cachix watch-store"
-    wait "$WATCH_PID" 2>/dev/null || true
-  fi
-}
-
-
-trap cleanup_cachix EXIT
 
 cleanup_store() {
   echo "🧹 Running Nix GC to free disk space"
@@ -58,7 +46,8 @@ build_home_manager() {
     args+=(".#homeConfigurations.${user}.activationPackage")
   done
 
-  nix build --max-jobs 2  --no-link "${args[@]}"  
+  nix build --max-jobs 2 "${args[@]}"  --out-link ./result
+  nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
   cleanup_store
 }
 
@@ -74,7 +63,8 @@ build_nixos() {
 
   for host in "${NIXOS_TARGETS[@]}"; do
     echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
-    nix build --max-jobs 2  --no-link ".#nixosConfigurations.${host}.config.system.build.toplevel"
+    nix build --max-jobs 2  ".#nixosConfigurations.${host}.config.system.build.toplevel" --out-link ./result
+    nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
     cleanup_store
   done
 
