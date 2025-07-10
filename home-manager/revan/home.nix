@@ -28,7 +28,6 @@
     pkgs.gitflow
     pkgs.tldr
     pkgs.lazygit
-    pkgs.glab
     pkgs.gcc
     pkgs.stdenv.cc.cc.lib
     pkgs.libgcc
@@ -37,6 +36,7 @@
     pkgs.extra-cmake-modules
     pkgs.zlib
     pkgs.nh
+    pkgs.httpie
   ];
   imports = [
     ../common/programs/nixvim.nix
