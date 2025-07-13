@@ -41,6 +41,7 @@
     pkgs.protonvpn-gui
     pkgs.wineWowPackages.stable
     pkgs.teamspeak3
+    pkgs.lazygit
   ];
 
   home.sessionVariables = {

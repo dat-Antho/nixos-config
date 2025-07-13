@@ -2,7 +2,15 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  aliases = import ../../common/aliases.nix {
+    username = config.home.username;
+    extra = { };
+  };
+
+in
+{
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
 
@@ -21,12 +29,10 @@
     pkgs.git
     pkgs.cryptomator
     pkgs.nh
+    pkgs.lazygit
   ];
 
-  home.shellAliases = {
-    nrb = "nh os boot . -- --accept-flake-config ";
-    nrs = "nh os switch . -- --accept-flake-config";
-  };
+  home.shellAliases = aliases;
   home.sessionVariables = {
     EDITOR = "nvim";
   };
