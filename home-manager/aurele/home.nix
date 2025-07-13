@@ -23,13 +23,13 @@ in
     ../common/programs/nixvim.nix
     ../common/programs/mpv.nix
   ];
-  home.packages = [
-    pkgs.protonvpn-gui
-    pkgs.qbittorrent
-    pkgs.git
-    pkgs.cryptomator
-    pkgs.nh
-    pkgs.lazygit
+  home.packages = with pkgs; [
+    protonvpn-gui
+    qbittorrent
+    git
+    cryptomator
+    nh
+    lazygit
   ];
 
   home.shellAliases = aliases;

@@ -7,41 +7,41 @@
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
   home.stateVersion = "24.05";
-  home.packages = [
-    pkgs.htop
-    pkgs.discord
-    pkgs.filezilla
-    pkgs.keepassxc
-    pkgs.obsidian
-    pkgs.discord
-    pkgs.thunderbird
-    pkgs.wget
-    pkgs.exfat
-    pkgs.rclone
-    pkgs.vial
-    pkgs.vdhcoapp
-    pkgs.tldr
-    pkgs.neofetch
-    pkgs.lf
-    pkgs.calibre
-    pkgs.cryptomator
-    pkgs.nh
-    pkgs.easyeffects
-    pkgs.dig
-    pkgs.rofi-wayland
-    pkgs.libreoffice-still
-    pkgs.gh
-    pkgs.qFlipper
-    pkgs.protonup-qt
-    # --- useful to plug phone and get the photos
-    pkgs.ifuse
-    pkgs.libimobiledevice
-    pkgs.gvfs
-    # ---
-    pkgs.protonvpn-gui
-    pkgs.wineWowPackages.stable
-    pkgs.teamspeak3
-    pkgs.lazygit
+  home.packages = with pkgs; [
+    htop
+    discord
+    filezilla
+    keepassxc
+    obsidian
+    discord
+    thunderbird
+    wget
+    exfat
+    rclone
+    vial
+    vdhcoapp
+    tldr
+    neofetch
+    lf
+    calibre
+    cryptomator
+    nh
+    easyeffects
+    dig
+    rofi-wayland
+    libreoffice-still
+    gh
+    qFlipper
+    protonup-qt
+    # -- useful to plug phone and get the photos
+    ifuse
+    libimobiledevice
+    gvfs
+    # --
+    protonvpn-gui
+    wineWowPackages.stable
+    teamspeak3
+    lazygit
   ];
 
   home.sessionVariables = {

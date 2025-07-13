@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ahengy";
@@ -19,24 +20,24 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.python311Full
-    pkgs.python311Packages.pip
-    pkgs.python311Packages.virtualenv
-    pkgs.python311Packages.mypy
-    pkgs.poetry
-    pkgs.gitflow
-    pkgs.tldr
-    pkgs.lazygit
-    pkgs.gcc
-    pkgs.stdenv.cc.cc.lib
-    pkgs.libgcc
-    pkgs.gnumake
-    pkgs.cmake
-    pkgs.extra-cmake-modules
-    pkgs.zlib
-    pkgs.nh
-    pkgs.httpie
+  home.packages = with pkgs; [
+    python311Full
+    python311Packages.pip
+    python311Packages.virtualenv
+    python311Packages.mypy
+    poetry
+    gitflow
+    tldr
+    lazygit
+    gcc
+    stdenv.cc.cc.lib
+    libgcc
+    gnumake
+    cmake
+    extra-cmake-modules
+    zlib
+    nh
+    httpie
   ];
   imports = [
     ../common/programs/nixvim.nix

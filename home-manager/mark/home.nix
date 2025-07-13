@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
 
@@ -14,9 +15,9 @@
   imports = [
     ../common/programs/nixvim.nix
   ];
-  home.packages = [
-    pkgs.git
-    pkgs.nh
+  home.packages = with pkgs; [
+    git
+    nh
   ];
 
   home.sessionVariables = {
