@@ -42,6 +42,7 @@
     wineWowPackages.stable
     teamspeak3
     lazygit
+    lutris
   ];
 
   home.sessionVariables = {
