@@ -31,7 +31,7 @@ in
     nh
     lazygit
   ];
-
+  programs.bash.enable = true;
   home.shellAliases = aliases;
   home.sessionVariables = {
     EDITOR = "nvim";
