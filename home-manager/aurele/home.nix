@@ -15,7 +15,7 @@
   imports = [
     ../common/programs/nixvim.nix
     ../common/programs/mpv.nix
-    (import ../../common/programs/zsh-base.nix {
+    (import ../common/programs/zsh-base.nix {
       extraAliases = {
       };
     })
