@@ -13,7 +13,7 @@ let
     nrb = "nh os boot . -- --accept-flake-config ";
     nrs = "nh os switch . -- --accept-flake-config";
     g = "lazygit";
-    fmt = "nix run .#formatter.x86_64-linux -- .";
+    nfmt = "nix run .#formatter.x86_64-linux -- .";
   };
 
 in
