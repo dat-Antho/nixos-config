@@ -58,7 +58,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "hm-backup";
+              home-manager.backupFileExtension = "";
               home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
               nix.settings.trusted-users = [
