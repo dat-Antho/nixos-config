@@ -3,13 +3,6 @@
   pkgs,
   ...
 }:
-let
-  aliases = import ../common/aliases.nix {
-    username = config.home.username;
-    extra = { };
-  };
-
-in
 {
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
@@ -22,6 +15,10 @@ in
   imports = [
     ../common/programs/nixvim.nix
     ../common/programs/mpv.nix
+    (import ../../common/programs/zsh-base.nix {
+      extraAliases = {
+      };
+    })
   ];
   home.packages = with pkgs; [
     protonvpn-gui
@@ -32,7 +29,6 @@ in
     lazygit
   ];
   programs.bash.enable = true;
-  home.shellAliases = aliases;
   home.sessionVariables = {
     EDITOR = "nvim";
   };

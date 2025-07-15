@@ -14,6 +14,10 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
     ../common/programs/nixvim.nix
+    (import ../../common/programs/zsh-base.nix {
+      extraAliases = {
+      };
+    })
   ];
   home.packages = with pkgs; [
     git
