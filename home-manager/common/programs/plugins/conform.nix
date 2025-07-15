@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     # Dependencies
     #
@@ -20,7 +21,7 @@
             -- Disable "format_on_save lsp_fallback" for lanuages that don't
             -- have a well standardized coding style. You can add additional
             -- lanuages here or re-enable it for the disabled ones.
-            local disable_filetypes = { c = true, cpp = true }
+            local disable_filetypes = { c = true, cpp = true, nix = true }
             return {
               timeout_ms = 2000,
               lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
@@ -31,6 +32,7 @@
           lua = [ "stylua" ];
           # Conform can also run multiple formatters sequentially
           python = [ "black" ];
+
           #
           # You can use a sublist to tell conform to run *until* a formatter
           # is found
