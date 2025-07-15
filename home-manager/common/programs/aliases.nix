@@ -1,7 +1,7 @@
 #used to share aliases, return all the common aliases merged with the "extra"
-{ username
-, extra ? { }
-,
+{
+  username,
+  extra ? { },
 }:
 
 let
@@ -13,6 +13,7 @@ let
     nrb = "nh os boot . -- --accept-flake-config ";
     nrs = "nh os switch . -- --accept-flake-config";
     g = "lazygit";
+    fmt = "nix run .#formatter.x86_64-linux -- .";
   };
 
 in
