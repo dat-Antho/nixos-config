@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -86,7 +85,7 @@
   users.users.anthony = {
     isNormalUser = true;
     description = "Anthony";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
       keepassxc

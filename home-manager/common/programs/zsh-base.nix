@@ -1,13 +1,12 @@
-{
-  username ? "anthony",
-  extraAliases ? { },
+{ username ? "anthony"
+, extraAliases ? { }
+,
 }:
 
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 let

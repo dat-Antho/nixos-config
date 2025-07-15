@@ -15,7 +15,6 @@
   };
 
   inputs = {
-    alejandra.url = "github:kamadorueda/alejandra";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,71 +29,78 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixvim,
-    disko,
-    alejandra,
-    ...
-  }: let
-    system = "x86_64-linux";
-    # function to create a nixos configuration with home-manager
-    mkNixosHost = {
-      name, # represent the name of the system
-      user ? "anthony", # name of the main user
-      home-manager-directory, # name of directory containing the desired home.nix
-      extraModules ? [],
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nixvim
+    , disko
+    , ...
     }:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules =
-          [
+    let
+      system = "x86_64-linux";
+      # function to create a nixos configuration with home-manager
+      mkNixosHost =
+        { name
+        , # represent the name of the system
+          user ? "anthony"
+        , # name of the main user
+          home-manager-directory
+        , # name of directory containing the desired home.nix
+          extraModules ? [ ]
+        ,
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
             ./nixos-configs/${name}/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
-              home-manager.sharedModules = [nixvim.homeManagerModules.nixvim];
+              home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
-              nix.settings.trusted-users = ["root" user];
+              nix.settings.trusted-users = [
+                "root"
+                user
+              ];
             }
-          ]
-          ++ extraModules;
+          ] ++ extraModules;
+        };
+
+      # create only home-manager config
+      mkHMOnly =
+        name:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { inherit system; };
+          modules = [
+            ./home-manager/${name}/home.nix
+            nixvim.homeManagerModules.nixvim
+          ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        zeno = mkNixosHost {
+          name = "zeno";
+          home-manager-directory = "anthony";
+        };
+        aurele = mkNixosHost {
+          name = "aurele";
+          home-manager-directory = "aurele";
+        };
+        mark = mkNixosHost {
+          name = "mark";
+          home-manager-directory = "mark";
+          extraModules = [ disko.nixosModules.disko ];
+        };
       };
 
-    # create only home-manager config
-    mkHMOnly = name:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {inherit system;};
-        modules = [
-          ./home-manager/${name}/home.nix
-          nixvim.homeManagerModules.nixvim
-        ];
+      homeConfigurations = {
+        revan = mkHMOnly "revan";
       };
-  in {
-    nixosConfigurations = {
-      zeno = mkNixosHost {
-        name = "zeno";
-        home-manager-directory = "anthony";
-      };
-      aurele = mkNixosHost {
-        name = "aurele";
-        home-manager-directory = "aurele";
-      };
-      mark = mkNixosHost {
-        name = "mark";
-        home-manager-directory = "mark";
-        extraModules = [disko.nixosModules.disko];
-      };
+
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
     };
-
-    homeConfigurations = {
-      revan = mkHMOnly "revan";
-    };
-
-    formatter.${system} = alejandra.defaultPackage.${system};
-  };
 }

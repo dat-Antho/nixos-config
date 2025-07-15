@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }:
 {
   home.username = "anthony";
@@ -16,8 +15,7 @@
     ../common/programs/nixvim.nix
     ../common/programs/mpv.nix
     (import ../common/programs/zsh-base.nix {
-      extraAliases = {
-      };
+      extraAliases = { };
     })
   ];
   home.packages = with pkgs; [
