@@ -4,7 +4,7 @@
   ...
 }:
 let
-  aliases = import ../../common/aliases.nix {
+  aliases = import ../common/aliases.nix {
     username = config.home.username;
     extra = { };
   };
