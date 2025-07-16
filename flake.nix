@@ -16,6 +16,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
@@ -35,6 +39,7 @@
     , home-manager
     , nixvim
     , disko
+    , stylix
     , ...
     }:
     let
@@ -85,6 +90,7 @@
         zeno = mkNixosHost {
           name = "zeno";
           home-manager-directory = "anthony";
+          extraModules = [ stylix.nixosModules.stylix ];
         };
         aurele = mkNixosHost {
           name = "aurele";

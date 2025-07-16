@@ -15,4 +15,11 @@
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
+  stylix = {
+    enable = true;
+
+    # Palette Gruvbox Dark Medium
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  };
+
 }

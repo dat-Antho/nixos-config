@@ -2,6 +2,7 @@
 , pkgs
 , ...
 }: {
+  stylix.targets.kitty.enable = false;
   programs.kitty = {
     enable = true;
     themeFile = "gruvbox-dark-hard";
