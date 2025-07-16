@@ -62,6 +62,8 @@
       exec-once = [
         "waybar"
         "mako"
+        "swww-daemon &"
+        "swww img ~/git/nixos-config/home-manager/common/brown_city_planet.jpg"
       ];
     };
   };
@@ -77,6 +79,7 @@
     papirus-icon-theme
     arc-theme
     lxappearance # Theming tools
+    swww
   ];
 
 }
