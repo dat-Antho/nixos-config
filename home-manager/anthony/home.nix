@@ -27,7 +27,6 @@
     nh
     easyeffects
     dig
-    rofi-wayland
     libreoffice-still
     gh
     qFlipper
@@ -49,6 +48,9 @@
     LC_ALL = "en_US.UTF-8";
   };
 
+
+  stylix.targets.kitty.enable = false;
+  stylix.targets.nixvim.enable = false;
   imports = [
     ./programs
     ../common/programs/git.nix

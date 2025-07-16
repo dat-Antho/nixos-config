@@ -39,7 +39,7 @@
         "SUPER,Return, exec, kitty"
         "SUPER,T, exec, kitty"
         "SUPER,B, exec, firefox"
-        "SUPER,D, exec, rofi, -show, run"
+        "SUPER,D, exec, wofi, -show, drun"
         "SUPER,Q, killactive"
         "SUPER,M, exit"
         "SUPER,1, workspace, 1"
@@ -204,6 +204,7 @@
       arc-theme
       lxappearance # Theming tools
       swww
+      wofi
     ];
 
 }
