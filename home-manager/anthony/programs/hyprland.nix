@@ -39,12 +39,23 @@
         "SUPER,Return, exec, kitty"
         "SUPER,T, exec, kitty"
         "SUPER,B, exec, firefox"
-        "SUPER,R, exec, rofi -show drun"
+        "SUPER,D, exec, rofi, -show, drun"
         "SUPER,Q, killactive"
         "SUPER,M, exit"
         "SUPER,1, workspace, 1"
         "SUPER,2, workspace, 2"
         "SUPER,3, workspace, 3"
+        "SUPER_SHIFT,R, exec, hyprctl, reload"
+        "SUPER_SHIFT,1, movetoworkspace, 1"
+        "SUPER_SHIFT,2, movetoworkspace, 2"
+        "SUPER_SHIFT,3, movetoworkspace, 3"
+        "SUPER,H, movefocus, l"
+        "SUPER,L, movefocus, r"
+        "SUPER,K, movefocus, u"
+        "SUPER,J, movefocus, d"
+        "SUPER,V, togglesplit"
+        "SUPER,F, fullscreen"
+        "SUPER_SHIFT,Space, togglefloating"
       ];
 
       # Autostart (Waybar, Mako)
@@ -54,15 +65,15 @@
       ];
     };
   };
-
+  programs.waybar.enable = true; # system bar
   # Add rice packages
   home.packages = with pkgs; [
     kitty # Terminal
-    waybar # Status bar
     mako # Notifications
     grim
     slurp # Screenshots
     swappy # Annotate screenshots
+    # should i keep these ?
     papirus-icon-theme
     arc-theme
     lxappearance # Theming tools
