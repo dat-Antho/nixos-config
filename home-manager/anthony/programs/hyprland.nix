@@ -83,22 +83,23 @@
           "clock"
         ];
         modules-right = [
+          "tray"
           "network"
           "cpu"
           "memory"
           "battery"
           "pulseaudio"
-          "tray"
         ];
 
         clock = {
-          format = "  %H:%M";
+          format = "{:%H:%M}";
         };
 
         network = {
-          format-wifi = "  {essid}";
-          format-ethernet = "  {ifname}";
-          format-disconnected = "  No net";
+          format = "{ipaddr} ↑{bandwidthUpOctets} ↓{bandwidthDownOctets}";
+          tooltip-format = "{ifname} \nGW: {gwaddr}";
+          format-disconnected = "❌ Offline";
+          interval = 1;
         };
 
         cpu = {
@@ -106,7 +107,7 @@
         };
 
         memory = {
-          format = "  {used:0.1f}G";
+          format = "{used:0.1f}G";
         };
 
         battery = {
@@ -120,6 +121,7 @@
 
         tray = {
           icon-size = 16;
+          spacing = 10;
         };
       }
     ];
@@ -194,11 +196,11 @@
   # };
   # Add rice packages
   home.pointerCursor = {
-  gtk.enable = true;
-  name = "Adwaita"; # Ou "Breeze", "Bibata-Modern-Ice", "Capitaine Cursors", etc.
-  package = pkgs.adwaita-icon-theme;
-  size = 50;
-};
+    gtk.enable = true;
+    name = "Adwaita"; # Ou "Breeze", "Bibata-Modern-Ice", "Capitaine Cursors", etc.
+    package = pkgs.adwaita-icon-theme;
+    size = 50;
+  };
   home.packages = with pkgs;
     [
       kitty # Terminal
