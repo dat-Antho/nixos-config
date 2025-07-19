@@ -10,6 +10,7 @@
     systemd.enable = false;
     portalPackage = null;
     settings = {
+      "$mod" = "SUPER";
       general = {
         gaps_in = 6;
         gaps_out = 10;
@@ -36,26 +37,26 @@
 
       # Keybindings
       bind = [
-        "SUPER,Return, exec, kitty"
-        "SUPER,T, exec, kitty"
-        "SUPER,B, exec, firefox"
-        "SUPER,D, exec, wofi, -show, drun"
-        "SUPER,Q, killactive"
-        "SUPER,M, exit"
-        "SUPER,1, workspace, 1"
-        "SUPER,2, workspace, 2"
-        "SUPER,3, workspace, 3"
-        "SUPER_SHIFT,R, exec, hyprctl, reload"
-        "SUPER_SHIFT,1, movetoworkspace, 1"
-        "SUPER_SHIFT,2, movetoworkspace, 2"
-        "SUPER_SHIFT,3, movetoworkspace, 3"
-        "SUPER,H, movefocus, l"
-        "SUPER,L, movefocus, r"
-        "SUPER,K, movefocus, u"
-        "SUPER,J, movefocus, d"
-        "SUPER,V, togglesplit"
-        "SUPER,F, fullscreen"
-        "SUPER_SHIFT,Space, togglefloating"
+        "$mod,Return, exec, kitty"
+        "$mod,T, exec, kitty"
+        "$mod,B, exec, firefox"
+        "$mod,D, exec, wofi --show drun"
+        "$mod,Q, killactive"
+        "$mod,M, exit"
+        "$mod,1, workspace, 1"
+        "$mod,2, workspace, 2"
+        "$mod,3, workspace, 3"
+        "$mod SHIFT,R, exec, hyprctl, reload"
+        "$mod SHIFT,1, movetoworkspace, 1"
+        "$mod SHIFT,2, movetoworkspace, 2"
+        "$mod SHIFT,3, movetoworkspace, 3"
+        "$mod,H, movefocus, l"
+        "$mod,L, movefocus, r"
+        "$mod,K, movefocus, u"
+        "$mod,J, movefocus, d"
+        "$mod,V, togglesplit"
+        "$mod,F, fullscreen"
+        "$mod SHIFT,Space, togglefloating"
       ];
 
       # Autostart (Waybar, Mako)
@@ -192,6 +193,12 @@
   #   base16Scheme = "gruvbox-dark-medium";
   # };
   # Add rice packages
+  home.pointerCursor = {
+  gtk.enable = true;
+  name = "Adwaita"; # Ou "Breeze", "Bibata-Modern-Ice", "Capitaine Cursors", etc.
+  package = pkgs.adwaita-icon-theme;
+  size = 50;
+};
   home.packages = with pkgs;
     [
       kitty # Terminal
@@ -205,6 +212,7 @@
       lxappearance # Theming tools
       swww
       wofi
+      adwaita-icon-theme
     ];
 
 }
