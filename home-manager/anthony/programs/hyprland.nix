@@ -58,6 +58,10 @@
         "$mod,F, fullscreen"
         "$mod SHIFT,Space, togglefloating"
       ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
 
       # Autostart (Waybar, Mako)
       exec-once = [
@@ -65,6 +69,7 @@
         "mako"
         "swww-daemon &"
         "swww img ~/git/nixos-config/home-manager/common/brown_city_planet.jpg"
+        "systemctl --user start hyprpolkitagent "
       ];
     };
   };
@@ -84,8 +89,10 @@
         ];
         modules-right = [
           "tray"
+          "custom/public-ip"
           "network"
-          "cpu"
+          "custom/gpu-temp"
+          "temperature"
           "memory"
           "battery"
           "pulseaudio"
@@ -96,18 +103,10 @@
         };
 
         network = {
-          format = "{ipaddr} ↑{bandwidthUpOctets} ↓{bandwidthDownOctets}";
+          format = "↑{bandwidthUpOctets} ↓{bandwidthDownOctets}";
           tooltip-format = "{ifname} \nGW: {gwaddr}";
           format-disconnected = "❌ Offline";
           interval = 1;
-        };
-
-        cpu = {
-          format = "  {usage}%";
-        };
-
-        memory = {
-          format = "{used:0.1f}G";
         };
 
         battery = {
@@ -122,6 +121,24 @@
         tray = {
           icon-size = 16;
           spacing = 10;
+        };
+
+        temperature = {
+          hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
+          format = "CPU: {temperatureC}°C";
+          critical-threshold = 90;
+          interval = 5;
+        };
+        "custom/gpu-temp" = {
+          exec = "echo -n 'GPU: '; nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | head -n1 | awk '{print $1\"°C\"}'";
+          interval = 5;
+          return-type = "text";
+        };
+        "custom/public-ip" = {
+          exec = "curl -L -4 iprs.fly.dev || echo N/A";
+          interval = 5;
+          return-type = "text";
+          format = "🌍 {}";
         };
       }
     ];
@@ -215,6 +232,10 @@
       swww
       wofi
       adwaita-icon-theme
+      # networkmanagerapplet # for protonvpn
+      hyprpolkitagent
+
+
     ];
 
 }
