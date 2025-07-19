@@ -90,10 +90,8 @@
         modules-right = [
           "tray"
           "custom/public-ip"
-          "network"
           "custom/gpu-temp"
           "temperature"
-          "memory"
           "battery"
           "pulseaudio"
         ];
@@ -116,6 +114,12 @@
 
         pulseaudio = {
           format = "  {volume}%";
+          pulseaudio = {
+            format = "🔊 {volume}%";
+            format-muted = "🔇 Muted";
+            scroll-step = 5; # Volume step with mouse wheel
+            on-click = "pavucontrol"; # Open gui
+          };
         };
 
         tray = {
@@ -140,76 +144,160 @@
           return-type = "text";
           format = "🌍 {}";
         };
-      }
+           }
     ];
-    # style =
-    #   ''
-    #       * {
-    #         border: none;
-    #         border-radius: 0;
-    #         font-family: Source Code Pro;
-    #       }
-    #       window#waybar {
-    #         #background: #16191C;
-    #         color: #AAB2BF;
-    #       }
-    #       #workspaces button {
-    #         padding: 0 5px;
-    #       }
-    #     * {
-    #       border: none;
-    #       border-radius: 0;
-    #       padding: 0 6px;
-    #       font-family: sans-serif;
-    #       font-size: 14px;
-    #       background: transparent;
-    #       color: #eceff4;
-    #     }
-    #
-    #     window {
-    #       background: rgba(22, 22, 22, 0.90);
-    #     }
-    #
-    #     #workspaces button {
-    #       color: #eceff4;
-    #       background: transparent;
-    #       padding: 0 8px;
-    #       margin: 0 3px;
-    #       border-radius: 4px;
-    #     }
-    #
-    #     #workspaces button.focused {
-    #       background: #5e81ac;
-    #       color: #2e3440;
-    #     }
-    #
-    #     #clock, #battery, #cpu, #memory, #network, #pulseaudio {
-    #       margin: 0 7px;
-    #     }
-    #
-    #     #tray {
-    #       margin-left: 10px;
-    #     }
-    #
-    #     #custom-spotify {
-    #       color: #1db954;
-    #     }
-    #
-    #     #mode {
-    #       background: #bf616a;
-    #       color: #fff;
-    #       border-radius: 4px;
-    #       padding: 0 7px;
-    #       margin: 0 7px;
-    #     }
-    #   '';
-    #
+     style =
+           ''
+@define-color bg-main        #282828;
+@define-color bg-alt         #3c3836;
+@define-color bg-inactive    #504945;
+@define-color bg-focus       #665c54;
+
+@define-color fg-normal      #ebdbb2;
+@define-color fg-muted       #a89984;
+@define-color fg-warning     #fabd2f;
+@define-color fg-critical    #fb4934;
+@define-color fg-accent      #d79921;
+@define-color fg-success     #98971a;
+@define-color fg-link        #83a598;
+
+@define-color red            #cc241d;
+@define-color green          #98971a;
+@define-color yellow         #d79921;
+@define-color orange         #fe8019;
+@define-color blue           #458588;
+@define-color purple         #b16286;
+@define-color aqua           #8ec07c;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* Modules containers */
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 4px 8px;
+  background-color: transparent;
+}
+
+/* Workspaces */
+#workspaces button {
+  padding: 4px 8px;
+  margin: 2px;
+  color: @fg-muted;
+  background: transparent;
+  border-radius: 6px;
+}
+
+#workspaces button.focused {
+  background: @bg-focus;
+  color: @fg-accent;
+}
+
+#workspaces button.urgent {
+  background: @fg-critical;
+  color: @bg-main;
+}
+
+#workspaces button.active {
+  background: @bg-focus;
+  color: @fg-normal;
+}
+
+/* Generic module style */
+#clock,
+#cpu,
+#memory,
+#temperature,
+#disk,
+#battery,
+#network,
+#pulseaudio,
+#custom-microphone,
+#custom-public-ip,
+#custom-gpu-temp,
+#tray {
+  padding: 2px 10px;
+  margin: 0 4px;
+  border-radius: 8px;
+  background-color: @bg-inactive;
+  color: @fg-normal;
+}
+
+/* Individual module tweaks */
+#clock {
+  color: @fg-accent;
+}
+
+#cpu,
+#memory {
+  color: @fg-normal;
+}
+
+#temperature {
+  color: @fg-normal;
+}
+
+#disk {
+  color: @aqua;
+}
+
+#battery {
+  color: @fg-success;
+}
+
+#battery.warning:not(.charging) {
+  color: @fg-warning;
+}
+
+#battery.critical:not(.charging) {
+  color: @fg-critical;
+}
+
+#pulseaudio {
+  color: @fg-normal;
+}
+
+#custom-public-ip {
+  color: @fg-link;
+}
+
+#network {
+  color: @aqua;
+  min-width: 180px; 
+}
+
+#network.disconnected {
+  color: @fg-muted;
+}
+
+/* Tray icons */
+#tray {
+  background-color: @bg-inactive;
+  margin: 0 6px;
+}
+
+#custom-notification {
+  color: @yellow;
+  padding-right: 8px;
+}
+      '';
+    
   };
-  # stylix = {
-  #   enable = true;
-  #
-  #   # Palette Gruvbox Dark Medium
-  #   base16Scheme = "gruvbox-dark-medium";
   # };
   # Add rice packages
   home.pointerCursor = {
@@ -232,8 +320,11 @@
       swww
       wofi
       adwaita-icon-theme
-      # networkmanagerapplet # for protonvpn
-      hyprpolkitagent
+      hyprpolkitagent # allow apps to ask credentials
+      pavucontrol
+      pamixer # used to detect if mic is on
+      pipewire
+      pulseaudio
 
 
     ];
