@@ -22,6 +22,8 @@
     tldr
     neofetch
     lf
+    fzf
+    fd
     calibre
     cryptomator
     nh

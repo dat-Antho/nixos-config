@@ -14,6 +14,7 @@ let
     nrs = "nh os switch . -- --accept-flake-config";
     g = "lazygit";
     nfmt = "nix run .#formatter.x86_64-linux -- .";
+    f = "fcd";
   };
 
 in

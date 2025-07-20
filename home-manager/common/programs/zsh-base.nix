@@ -23,9 +23,17 @@ in
     defaultKeymap = "emacs";
 
     initContent = lib.mkBefore ''
-      export PATH="$HOME/bin:$PATH"
-      autoload -Uz compinit
-      compinit -C
+            export PATH="$HOME/bin:$PATH"
+            autoload -Uz compinit
+            compinit -C
+
+      fcd() {
+        local dir
+         dir=$(fd . ~/ /mnt -t d --hidden --exclude .git 2>/dev/null \
+          | fzf --preview 'exa -T --color=always {} | head -40') || return
+        cd "$dir"
+      }
+
     '';
 
     shellAliases = commonAliases;
