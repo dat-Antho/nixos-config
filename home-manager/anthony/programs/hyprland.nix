@@ -1,5 +1,6 @@
 { config
 , pkgs
+,lib
 , ...
 }: {
 
@@ -12,6 +13,7 @@
     settings = {
       "$mod" = "SUPER";
       general = {
+        "col.active_border" = lib.mkForce "rgb(d79921)";
         gaps_in = 3;
         gaps_out = 5;
         border_size = 2;
