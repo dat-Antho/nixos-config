@@ -12,6 +12,7 @@
       { url = "https://www.gamingonlinux.com/article_rss.php"; }
       { url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUkyyRJdVdXFmBuxPLFYmPw"; }
       { url = "https://tldr.tech/api/rss/tech"; }
+      { url = "https://www.bleepingcomputer.com/feed/"; }
     ];
   };
 }

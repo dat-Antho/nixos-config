@@ -25,6 +25,7 @@
     cryptomator
     nh
     lazygit
+    wine
   ];
   programs.bash.enable = true;
   home.sessionVariables = {

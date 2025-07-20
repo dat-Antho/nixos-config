@@ -17,7 +17,7 @@
         gaps_in = 3;
         gaps_out = 5;
         border_size = 2;
-        layout = "dwindle";
+
       };
       decoration = {
         rounding = 10;
@@ -79,7 +79,7 @@
         "waybar"
         "mako"
         "swww-daemon &"
-        "swww img ~/git/nixos-config/home-manager/common/brown_city_planet.jpg"
+        "swww img ~/git/nixos-config/home-manager/common/background3.png"
         "systemctl --user start hyprpolkitagent "
       ];
     };
@@ -337,7 +337,7 @@
       pipewire
       pulseaudio
       kdePackages.dolphin
-
+      kdePackages.gwenview
 
     ];
 
