@@ -43,6 +43,7 @@
     teamspeak3
     lazygit
     lutris
+    r2modman
   ];
 
   home.sessionVariables = {

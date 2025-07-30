@@ -6,9 +6,17 @@ set -euo pipefail
 # Build Targets Configuration
 ##################################
 
-NIXOS_TARGETS=("zeno" "aurele" "mark")
-HOME_MANAGER_TARGETS=("revan")
+##################################
+# Dynamic Target Discovery
+##################################
 
+get_nixos_targets() {
+  nix flake show --json | jq -r '.nixosConfigurations | keys[]?'
+}
+
+get_hm_targets() {
+  nix flake show --json | jq -r '.homeConfigurations | keys[]?'
+}
 ##################################
 # Cachix Setup
 ##################################
@@ -28,26 +36,25 @@ cleanup_store() {
   echo "🧹 Running Nix GC to free disk space"
   nix store gc || true
 }
-
 ##################################
 # Home Manager Build
 ##################################
 
 build_home_manager() {
-  if [[ ${#HOME_MANAGER_TARGETS[@]} -eq 0 ]]; then
-    echo "ℹ️ No Home Manager targets defined"
+  local targets
+  targets=($(get_hm_targets))
+  if [[ ${#targets[@]} -eq 0 ]]; then
+    echo "ℹ️ No Home Manager targets found"
     return
   fi
-
   echo "🏠 Building Home Manager configurations:"
   local args=()
-  for user in "${HOME_MANAGER_TARGETS[@]}"; do
+  for user in "${targets[@]}"; do
     echo "  🔧 .#homeConfigurations.${user}.activationPackage"
     args+=(".#homeConfigurations.${user}.activationPackage")
   done
-
-  nix build --max-jobs 2 "${args[@]}"  --out-link ./result
-  nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
+  nix build --max-jobs 2 "${args[@]}" --out-link ./result-hm
+  nix path-info --recursive ./result-hm | cachix push "$CACHIX_NAME"
   cleanup_store
 }
 
@@ -56,19 +63,20 @@ build_home_manager() {
 ##################################
 
 build_nixos() {
-  if [[ ${#NIXOS_TARGETS[@]} -eq 0 ]]; then
-    echo "ℹ️ No NixOS targets defined"
+  local targets
+  targets=($(get_nixos_targets))
+  if [[ ${#targets[@]} -eq 0 ]]; then
+    echo "ℹ️ No NixOS targets found"
     return
   fi
-
-  for host in "${NIXOS_TARGETS[@]}"; do
+  for host in "${targets[@]}"; do
     echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
-    nix build --max-jobs 2  ".#nixosConfigurations.${host}.config.system.build.toplevel" --out-link ./result
+    nix build --max-jobs 2 ".#nixosConfigurations.${host}.config.system.build.toplevel" --out-link ./result
     nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
     cleanup_store
   done
-
 }
+
 
 ##################################
 # Main
