@@ -15,7 +15,7 @@ get_nixos_targets() {
 }
 
 get_hm_targets() {
-  nix flake show --json | jq -r '.homeConfigurations | keys[]?'
+  nix eval .#homeConfigurations --apply 'builtins.attrNames' --json | jq -r '.[]'
 }
 ##################################
 # Cachix Setup
