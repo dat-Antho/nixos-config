@@ -19,22 +19,25 @@
         upstream_dns = [
           "https://dns.cloudflare.com/dns-query"
           "https://dns.quad9.net/dns-query"
+          "tls://dns.quad9.net"
+          "tls://1dot1dot1dot1.cloudflare-dns.com"
         ];
         cache_size = 4096;
         cache_ttl_min = 300;
         cache_ttl_max = 1800;
-        dnssec_enabled = true;
         cache_optimistic = true;
+        enable_dnssec = true;
       };
-       filtering = {
+      filtering = {
         protection_enabled = true;
         filtering_enabled = true;
 
-        parental_enabled = false;  # Parental control-based DNS requests filtering.
+        parental_enabled = false; # Parental control-based DNS requests filtering.
         safe_search = {
-          enabled = false;  # Enforcing "Safe search" option for search engines, when possible.
+          enabled = false; # Enforcing "Safe search" option for search engines, when possible.
         };
       };
+
       filters = [
         {
           enabled = true;
@@ -44,4 +47,4 @@
       ];
     };
   };
- }
+}
