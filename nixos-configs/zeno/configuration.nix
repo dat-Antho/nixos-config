@@ -47,6 +47,14 @@
   };
   # FLATPAK
   services.flatpak.enable = true;
+
+  # SELFHOSTED-AI
+  environment.systemPackages = [
+    (pkgs.ollama.override {
+      acceleration = "cuda";
+    })
+  ];
+  services.open-webui.enable = true;
   # RANDOM PROGRAMS
   programs.localsend.enable = true; # airdrop alternative, needs to be here for firewall autoconfig
   programs.partition-manager.enable = true;
