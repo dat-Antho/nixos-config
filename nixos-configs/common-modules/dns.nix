@@ -7,55 +7,41 @@
 
   networking.useHostResolvConf = false;
 
-  # Forward all DNS to dnscrypt-proxy (local stub resolver)
   networking.nameservers = [ "127.0.0.1" ];
   networking.networkmanager.dns = lib.mkForce "none";
-  services.dnscrypt-proxy2 = {
+  services.adguardhome = {
     enable = true;
+    mutableSettings = false; # only declarative config hehe
     settings = {
-      listen_addresses = [ "127.0.0.1:5300" ]; # custom port
-      ipv4_servers = true;
-      require_dnssec = true;
-      require_nolog = true;
-      require_nofilter = true;
-      doh_servers = true;
-      dnscrypt_servers = true;
-      cache = true;
-      cache_size = 4096;
-      cache_min_ttl = 240;
-      cache_max_ttl = 86400;
+      dns = {
+        # REQUIRED: List of bootstrap DNS servers for DoH/DoT name resolution
+        bootstrap_dns = [ "1.1.1.1" "8.8.8.8" ];
+        upstream_dns = [
+          "https://dns.cloudflare.com/dns-query"
+          "https://dns.quad9.net/dns-query"
+        ];
+        cache_size = 4096;
+        cache_ttl_min = 300;
+        cache_ttl_max = 1800;
+        dnssec_enabled = true;
+        cache_optimistic = true;
+      };
+       filtering = {
+        protection_enabled = true;
+        filtering_enabled = true;
 
-      # You can choose resolvers from https://dnscrypt.info/public-servers
-      server_names = [
-        "cloudflare"
-        "quad9-doh"
+        parental_enabled = false;  # Parental control-based DNS requests filtering.
+        safe_search = {
+          enabled = false;  # Enforcing "Safe search" option for search engines, when possible.
+        };
+      };
+      filters = [
+        {
+          enabled = true;
+          url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+          name = "StevenBlack";
+        }
       ];
     };
   };
-
-  services.blocky = {
-    enable = true;
-    settings = {
-      # use at service startup, if it's not set we get dns error
-      # bootstrapdns !== upstreams dns
-      bootstrapDns = "1.1.1.1";
-      ports.dns = 53;
-      upstreams.groups.default = [ "127.0.0.1:5300" ];
-      blocking = {
-        denylists = {
-          ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" ];
-        };
-        clientGroupsBlock = {
-          default = [ "ads" ];
-        };
-      };
-      caching = {
-        minTime = "5m";
-        maxTime = "30m";
-        prefetching = true;
-      };
-    };
-
-  };
-
-}
+ }
