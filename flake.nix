@@ -64,7 +64,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "";
-              home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
+              home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
               nix.settings.trusted-users = [
                 "root"
@@ -81,7 +81,7 @@
           pkgs = import nixpkgs { inherit system; };
           modules = [
             ./home-manager/${name}/home.nix
-            nixvim.homeManagerModules.nixvim
+            nixvim.homeModules.nixvim
           ];
         };
     in
