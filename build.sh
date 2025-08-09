@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
+# Control Nix's internal parallelism. 0 = auto (use nix.conf settings).
+# Example override: NIX_MAX_JOBS=8 ./build.sh
+NIX_MAX_JOBS="${NIX_MAX_JOBS:-2}"
 ##################################
 # Build Targets Configuration
 ##################################
@@ -63,21 +65,28 @@ build_home_manager() {
 ##################################
 
 build_nixos() {
-  local targets
-  targets=($(get_nixos_targets))
-  if [[ ${#targets[@]} -eq 0 ]]; then
+  mapfile -t hosts < <(get_nixos_targets || true)
+  if [[ ${#hosts[@]} -eq 0 ]]; then
     echo "ℹ️ No NixOS targets found"
     return
   fi
-  for host in "${targets[@]}"; do
-    echo "  🔧 Building nixosConfigurations.${host}.config.system.build.toplevel"
-    nix build --max-jobs 2 ".#nixosConfigurations.${host}.config.system.build.toplevel" --out-link ./result
-    nix path-info --recursive ./result | cachix push "$CACHIX_NAME"
-    cleanup_store
+
+  echo "🧩 NixOS targets: ${hosts[*]}"
+  local args=()
+  for host in "${hosts[@]}"; do
+    echo "  🔧 .#nixosConfigurations.${host}.config.system.build.toplevel"
+    args+=(".#nixosConfigurations.${host}.config.system.build.toplevel")
   done
+
+  # Single build for all hosts; nix handles parallelism
+  nix build --keep-going --max-jobs "${NIX_MAX_JOBS}" --no-link "${args[@]}"
+
+  if [[ -n "${CACHIX_NAME:-}" ]]; then
+    nix path-info --recursive "${args[@]}" | cachix push "$CACHIX_NAME"
+  fi
+
+  cleanup_store
 }
-
-
 ##################################
 # Main
 ##################################
