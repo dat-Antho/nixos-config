@@ -3,7 +3,7 @@
 set -euo pipefail
 # Control Nix's internal parallelism. 0 = auto (use nix.conf settings).
 # Example override: NIX_MAX_JOBS=8 ./build.sh
-NIX_MAX_JOBS="${NIX_MAX_JOBS:-2}"
+NIX_MAX_JOBS="${NIX_MAX_JOBS:-0}"
 ##################################
 # Build Targets Configuration
 ##################################
