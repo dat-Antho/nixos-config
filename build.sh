@@ -79,7 +79,7 @@ build_nixos() {
   done
 
   # Single build for all hosts; nix handles parallelism
-  nix build --keep-going --max-jobs "${NIX_MAX_JOBS}" --no-link "${args[@]}"
+  nix build --accept-flake-config  --keep-going --max-jobs "${NIX_MAX_JOBS}" --no-link "${args[@]}"
 
   if [[ -n "${CACHIX_NAME:-}" ]]; then
     nix path-info --recursive "${args[@]}" | cachix push "$CACHIX_NAME"

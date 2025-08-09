@@ -320,7 +320,6 @@
   home.packages = with pkgs;
     [
       kitty # Terminal
-      mako # Notifications
       grim
       slurp # Screenshots
       swappy # Annotate screenshots
@@ -340,5 +339,11 @@
       kdePackages.gwenview
 
     ];
+  services.mako = {
+    # Notifications
+    enable = true;
+    defaultTimeout = 5000; #  milliseconds
+    ignoreTimeout = false;
+  };
 
 }
