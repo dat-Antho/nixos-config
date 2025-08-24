@@ -1,18 +1,21 @@
 { config
 , pkgs
-, ...
+, lib,
+...
 }: {
-  stylix.targets.kitty.enable = false;
-  programs.kitty = {
+    stylix.targets.foot.enable = true;
+  programs.foot = {
     enable = true;
-    themeFile = "gruvbox-dark-hard";
-    font = {
-      name = "JetbrainsMono Nerd Font Mono";
-      size = 12.0;
-    };
     settings = {
-      confirm_os_window_close = 0;
-      enable_audio_bell = false;
+      main = {
+        term = "foot";
+        font = lib.mkForce "JetBrainsMono Nerd Font:size=12";
+      };
+      bell = {
+        urgent = "no";
+        notify = "no";
+        visual = "no";
+      };
     };
   };
 }

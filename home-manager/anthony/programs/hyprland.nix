@@ -43,7 +43,7 @@
 
       # Keybindings
       bind = [
-        "$mod,Return, exec, kitty"
+        "$mod,Return, exec, foot"
         "$mod,T, exec, kitty"
         "$mod,B, exec, firefox"
         "$mod,E, exec, dolphin"
