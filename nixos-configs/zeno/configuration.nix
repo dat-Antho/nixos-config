@@ -54,7 +54,7 @@
       acceleration = "cuda";
     })
   ];
-  services.open-webui.enable = true;
+  services.open-webui.enable = false; # should decide what to do with that
   # RANDOM PROGRAMS
   programs.localsend.enable = true; # airdrop alternative, needs to be here for firewall autoconfig
   programs.partition-manager.enable = true;
