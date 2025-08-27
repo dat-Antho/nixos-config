@@ -205,6 +205,32 @@
           desc = "Move focus to the upper window";
         };
       }
+       {
+
+        mode = "n";
+
+        key = "<F2>";
+
+        action = ''
+
+          if vim.o.mouse == "" then
+
+            vim.o.mouse = "a"
+
+            print("Mouse ON")
+
+          else
+
+            vim.o.mouse = ""
+
+            print("🖱Mouse OFF")
+
+          end
+
+        '';
+
+        options.silent = true;
+    }
     ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
