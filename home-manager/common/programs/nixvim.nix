@@ -217,13 +217,13 @@
 
             vim.o.mouse = "a"
 
-            print("Mouse ON")
+            vim.notify("Mouse ON")
 
           else
 
             vim.o.mouse = ""
 
-            print("🖱Mouse OFF")
+            vim.notify("Mouse OFF")
 
           end
 
