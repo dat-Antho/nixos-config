@@ -205,38 +205,6 @@
           desc = "Move focus to the upper window";
         };
       }
-
-
-{
-
-        mode = "n";
-
-        key = "<leader>m"; # évite F2 capturé par Tabby
-
-        action = ''
-
-          <cmd>lua
-
-            if vim.o.mouse == "" then
-
-              vim.o.mouse = "a"
-
-              vim.api.nvim_echo({{"Mouse ON", "ModeMsg"}}, false, {})
-
-            else
-
-              vim.o.mouse = ""
-
-              vim.api.nvim_echo({{"Mouse OFF", "ModeMsg"}}, false, {})
-
-            end
-
-          <CR>
-
-        '';
-
-        options.silent = true;
-    }
     ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
