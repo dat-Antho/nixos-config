@@ -205,27 +205,33 @@
           desc = "Move focus to the upper window";
         };
       }
-       {
+
+
+{
 
         mode = "n";
 
-        key = "<F2>";
+        key = "<leader>m"; # évite F2 capturé par Tabby
 
         action = ''
 
-          if vim.o.mouse == "" then
+          <cmd>lua
 
-            vim.o.mouse = "a"
+            if vim.o.mouse == "" then
 
-            vim.notify("Mouse ON")
+              vim.o.mouse = "a"
 
-          else
+              vim.api.nvim_echo({{"Mouse ON", "ModeMsg"}}, false, {})
 
-            vim.o.mouse = ""
+            else
 
-            vim.notify("Mouse OFF")
+              vim.o.mouse = ""
 
-          end
+              vim.api.nvim_echo({{"Mouse OFF", "ModeMsg"}}, false, {})
+
+            end
+
+          <CR>
 
         '';
 
