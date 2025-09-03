@@ -40,7 +40,7 @@
     # --
     protonvpn-gui
     wineWowPackages.stable
-    teamspeak3
+    teamspeak6-client
     lazygit
     lutris
     r2modman
