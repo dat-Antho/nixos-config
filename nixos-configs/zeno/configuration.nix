@@ -29,7 +29,7 @@
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
   hardware.keyboard.qmk.enable = true;
-
+  services.udev.packages = [ pkgs.android-udev-rules ];
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.

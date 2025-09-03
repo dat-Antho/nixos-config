@@ -46,7 +46,7 @@
         "$mod,Return, exec, foot"
         "$mod,T, exec, kitty"
         "$mod,B, exec, firefox"
-        "$mod,E, exec, dolphin"
+        "$mod,E, exec, nautilus"
         "$mod,D, exec, wofi --show drun"
         "$mod,Q, killactive"
         "$mod,M, exit"
@@ -335,8 +335,8 @@
       pamixer # used to detect if mic is on
       pipewire
       pulseaudio
-      kdePackages.dolphin
-      kdePackages.gwenview
+      nautilus
+      libmtp # to connect to android phone
 
     ];
   services.mako = {
@@ -345,5 +345,4 @@
     defaultTimeout = 5000; #  milliseconds
     ignoreTimeout = false;
   };
-
 }

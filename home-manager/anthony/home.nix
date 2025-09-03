@@ -36,7 +36,6 @@
     # -- useful to plug phone and get the photos
     ifuse
     libimobiledevice
-    gvfs
     # --
     protonvpn-gui
     wineWowPackages.stable
@@ -44,6 +43,8 @@
     lazygit
     lutris
     r2modman
+    usbutils
+    gnupg
   ];
 
   home.sessionVariables = {
