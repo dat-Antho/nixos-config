@@ -92,10 +92,10 @@
           home-manager-directory = "anthony";
           extraModules = [ stylix.nixosModules.stylix ];
         };
-       # aurele = mkNixosHost {
-        #  name = "aurele";
-         # home-manager-directory = "aurele";
-        #};
+        aurele = mkNixosHost {
+          name = "aurele";
+          home-manager-directory = "aurele";
+        };
         mark = mkNixosHost {
           name = "mark";
           home-manager-directory = "mark";
