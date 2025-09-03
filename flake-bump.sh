@@ -3,7 +3,7 @@
 set -euo pipefail
 
 echo "🔄 Running flake update..."
-nix flake update
+nix  --accept-flake-config flake update
 
 echo "🔍 Checking for flake.lock changes..."
 if git diff --exit-code flake.lock > /dev/null; then
