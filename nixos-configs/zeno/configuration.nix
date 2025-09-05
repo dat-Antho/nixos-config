@@ -53,7 +53,7 @@
     (pkgs.ollama.override {
       acceleration = "cuda";
     })
-   # pkgs.open-webui
+    pkgs.open-webui
   ];
   services.open-webui.enable = false; # should decide what to do with that
   # RANDOM PROGRAMS
