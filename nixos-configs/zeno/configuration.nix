@@ -49,12 +49,12 @@
   services.flatpak.enable = true;
 
   # SELFHOSTED-AI
-  environment.systemPackages = [
-    (pkgs.ollama.override {
-      acceleration = "cuda";
-    })
-   # pkgs.open-webui
-  ];
+  #environment.systemPackages = [
+   # (pkgs.ollama.override {
+   #   acceleration = "cuda";
+   # })
+    #pkgs.open-webui
+  #];
   services.open-webui.enable = false; # should decide what to do with that
   # RANDOM PROGRAMS
   programs.localsend.enable = true; # airdrop alternative, needs to be here for firewall autoconfig
