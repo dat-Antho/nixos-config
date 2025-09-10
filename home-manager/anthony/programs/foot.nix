@@ -1,9 +1,9 @@
 { config
 , pkgs
-, lib,
-...
+, lib
+, ...
 }: {
-    stylix.targets.foot.enable = true;
+  stylix.targets.foot.enable = true;
   programs.foot = {
     enable = true;
     settings = {
