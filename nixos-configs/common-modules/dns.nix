@@ -19,14 +19,14 @@
         upstream_dns = [
           "https://dns.cloudflare.com/dns-query"
           "https://dns.quad9.net/dns-query"
-          "tls://dns.quad9.net"
-          "tls://1dot1dot1dot1.cloudflare-dns.com"
         ];
+        upstream_mode = "parallel";
         cache_size = 4096;
         cache_ttl_min = 300;
         cache_ttl_max = 1800;
         cache_optimistic = true;
         enable_dnssec = true;
+
       };
       filtering = {
         protection_enabled = true;
