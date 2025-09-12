@@ -2,7 +2,10 @@
 , pkgs
 , ...
 }:
-{
+
+let common = import ../common/programs/common-pkgs.nix pkgs; 
+in
+  {
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
 
@@ -18,15 +21,10 @@
       extraAliases = { };
     })
   ];
-  home.packages = with pkgs; [
-    protonvpn-gui
+  home.packages = common ++ (with pkgs; [
     qbittorrent
-    git
-    cryptomator
-    nh
-    lazygit
     wine
-  ];
+  ]);
   programs.bash.enable = true;
   home.sessionVariables = {
     EDITOR = "nvim";

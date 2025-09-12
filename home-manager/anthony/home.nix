@@ -2,31 +2,27 @@
 , pkgs
 , ...
 }:
+let common = import ../common/programs/common-pkgs.nix pkgs; 
+in
 {
   home.username = "anthony";
   home.homeDirectory = "/home/anthony";
   home.stateVersion = "24.05";
-  home.packages = with pkgs; [
+  home.packages = common ++ (with pkgs; [
     htop
-    discord
     filezilla
-    keepassxc
     obsidian
-    discord
     thunderbird
     wget
     exfat
     rclone
     vial
     vdhcoapp
-    tldr
     neofetch
     lf
     fzf
     fd
     calibre
-    cryptomator
-    nh
     easyeffects
     dig
     libreoffice-still
@@ -37,15 +33,13 @@
     ifuse
     libimobiledevice
     # --
-    protonvpn-gui
     wineWowPackages.stable
     teamspeak6-client
-    lazygit
     lutris
     r2modman
     usbutils
     gnupg
-  ];
+  ]);
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
