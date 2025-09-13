@@ -2,7 +2,7 @@
 , pkgs
 , ...
 }:
-let common = import ../common/programs/common-pkgs.nix pkgs; 
+let common = import ../common/programs/common-pkgs.nix pkgs;
 in
 {
   home.username = "anthony";
