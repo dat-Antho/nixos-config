@@ -47,7 +47,7 @@
   services.desktopManager.gnome.enable = true;
 
 
-  programs.ssh.startAgent = false; # gnome already enable one
+  programs.ssh.startAgent = lib.mkForce false; # gnome already enable one
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
