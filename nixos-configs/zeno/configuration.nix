@@ -15,12 +15,6 @@
     ./nixos-modules/audio.nix
     ./nixos-modules/desktop-env.nix
     ./nixos-modules/hyprland.nix
-    ../common-modules/nix.nix
-    ../common-modules/ssh-agent.nix
-    ../common-modules/dns.nix
-    ../common-modules/usbmux.nix
-    ../common-modules/syncthing.nix
-    ../common-modules/ntp.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

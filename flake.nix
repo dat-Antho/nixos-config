@@ -60,6 +60,11 @@
           modules = [
             ./nixos-configs/${name}/configuration.nix
             home-manager.nixosModules.home-manager
+            ./nixos-configs/common-modules/syncthing.nix
+            ./nixos-configs/common-modules/ntp.nix
+            ./nixos-configs/common-modules/nix.nix
+            ./nixos-configs/common-modules/ssh-agent.nix
+            ./nixos-configs/common-modules/dns.nix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
