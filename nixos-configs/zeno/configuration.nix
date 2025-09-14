@@ -10,11 +10,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./nixos-modules/nvidia.nix
-    ./nixos-modules/steam.nix
-    ./nixos-modules/audio.nix
-    ./nixos-modules/desktop-env.nix
-    ./nixos-modules/hyprland.nix
+    ./modules/nvidia.nix
+    ./modules/steam.nix
+    ./modules/audio.nix
+    ./modules/desktop-env.nix
+    ./modules/hyprland.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
