@@ -57,7 +57,7 @@
         }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [
+          modules = [ # If you want to share a module on all the nixos configs, put it here
             ./nixos-configs/${name}/configuration.nix
             home-manager.nixosModules.home-manager
             ./nixos-configs/common-modules/syncthing.nix
