@@ -46,6 +46,8 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+
+  programs.ssh.startAgent = false; # gnome already enable one
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
