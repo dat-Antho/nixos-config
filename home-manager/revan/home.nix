@@ -20,7 +20,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    python311Full
+    python311
     python311Packages.pip
     python311Packages.virtualenv
     python311Packages.mypy
