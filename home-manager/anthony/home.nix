@@ -52,7 +52,6 @@ in
   imports = [
     ./programs
     ../common/programs/git.nix
-    ../common/programs/nixvim.nix
     ../common/programs/zoxide.nix
     ../common/programs/mpv.nix
   ];

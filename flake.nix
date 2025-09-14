@@ -57,7 +57,8 @@
         }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ # If you want to share a module on all the nixos configs, put it here
+          modules = [
+            # If you want to share a module on all the nixos configs, put it here
             ./nixos-configs/${name}/configuration.nix
             home-manager.nixosModules.home-manager
             ./nixos-configs/common-modules/syncthing.nix
@@ -69,7 +70,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "";
-              home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
+              home-manager.sharedModules = [
+                nixvim.homeModules.nixvim
+
+                ./home-manager/common/programs/nixvim.nix
+              ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
               nix.settings.trusted-users = [
                 "root"
@@ -87,6 +92,7 @@
           modules = [
             ./home-manager/${name}/home.nix
             nixvim.homeModules.nixvim
+            ./home-manager/common/programs/nixvim.nix
           ];
         };
     in
