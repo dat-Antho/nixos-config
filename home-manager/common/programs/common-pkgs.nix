@@ -8,5 +8,6 @@ pkgs: with pkgs; [
   lazygit
   tldr
   keepassxc
+  signal-desktop
   # …
 ]
