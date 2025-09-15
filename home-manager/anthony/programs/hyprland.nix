@@ -108,7 +108,7 @@
         ];
 
         clock = {
-          format = "{:%H:%M}";
+          format = "{:%d/%m - %H:%M}";
         };
 
         network = {
