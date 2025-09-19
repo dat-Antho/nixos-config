@@ -11,6 +11,8 @@
     ./modules/teamspeak.nix
     ./modules/openssh.nix
     ./modules/users.nix
+    ./modules/radicale.nix
+    ./modules/nginx.nix
     ./disk-config.nix
   ];
   boot.loader.grub = {
@@ -19,8 +21,13 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
+  ############################
+  # Firewall
+  ############################
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   networking.hostName = "mark";
+
   networking.firewall.enable = true;
 
   system.stateVersion = "24.05";
