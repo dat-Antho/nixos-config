@@ -342,7 +342,11 @@
   services.mako = {
     # Notifications
     enable = true;
-    defaultTimeout = 5000; #  milliseconds
-    ignoreTimeout = false;
+    settings = {
+
+      defaultTimeout = 5000; #  milliseconds
+      ignoreTimeout = false;
+    };
+
   };
 }
