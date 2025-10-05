@@ -7,7 +7,7 @@
     recommendedProxySettings = true;
     recommendedGzipSettings = true;
     recommendedTlsSettings = true;
-
+    logError = "/var/log/nginx/error.log warn";
     virtualHosts."cal.datantho.ovh" = {
       enableACME = true;
       forceSSL = true;
@@ -25,7 +25,7 @@
   };
   security.acme = {
     acceptTerms = true;
-    defaults.email = "me@datantho.ovh"; # <-- change to your email
+    defaults.email = "me@datantho.ovh";
   };
 
 
