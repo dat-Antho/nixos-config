@@ -1,0 +1,6 @@
+steps:
+  hello:
+    image: bash
+    commands:
+      - echo "👋 Hello from Woodpecker CI!"
+      - echo "Running on $(hostname)"

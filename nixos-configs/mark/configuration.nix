@@ -13,6 +13,7 @@
     ./modules/users.nix
     ./modules/radicale.nix
     ./modules/nginx.nix
+    ./modules/woodpecker.nix
     ./disk-config.nix
   ];
   boot.loader.grub = {

@@ -22,6 +22,11 @@
         };
       };
     };
+    virtualHosts."ci.datantho.ovh" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = { proxyPass = "http://127.0.0.1:3007"; };
+    };
   };
   security.acme = {
     acceptTerms = true;
