@@ -1,5 +1,7 @@
 steps:
   hello:
+    when:
+        - event: manual
     image: bash
     commands:
       - echo "👋 Hello from Woodpecker CI!"
