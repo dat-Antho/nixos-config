@@ -3,7 +3,7 @@
 , ...
 }: {
 services.woodpecker-server = {
-    enable = true;
+    enable = false;
     environment = {
       WOODPECKER_HOST = "https://ci.datantho.ovh";
       WOODPECKER_SERVER_ADDR = "127.0.0.1:3007";
@@ -14,7 +14,7 @@ services.woodpecker-server = {
   };
 
   services.woodpecker-agents.agents."local" = {
-    enable = true;
+    enable = false;
     environment = {
       WOODPECKER_SERVER = "127.0.0.1:9000";
       WOODPECKER_HEALTHCHECK ="false";
