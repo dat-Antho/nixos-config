@@ -20,7 +20,7 @@ jobs:
       - uses: wimpysworld/nothing-but-nix@main
         with:
           hatchet-protocol: 'Rampage'
-          witness-carnage: true 
+          witness-carnage: false 
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
