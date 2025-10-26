@@ -2,7 +2,6 @@ name: Gitlab Sync
 
 on: 
   push:
-  pull_request:
   create:
   delete:
   workflow_dispatch:
