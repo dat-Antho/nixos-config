@@ -89,8 +89,9 @@
       firefox
       keepassxc
     ];
+    shell = pkgs.zsh;
   };
-
+  
   # Install firefox.
   programs.firefox.enable = true;
   # This value determines the NixOS release from which the default
