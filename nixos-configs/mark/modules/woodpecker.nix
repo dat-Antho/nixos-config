@@ -2,7 +2,7 @@
 , pkgs
 , ...
 }: {
-services.woodpecker-server = {
+  services.woodpecker-server = {
     enable = false;
     environment = {
       WOODPECKER_HOST = "https://ci.datantho.ovh";
@@ -17,7 +17,7 @@ services.woodpecker-server = {
     enable = false;
     environment = {
       WOODPECKER_SERVER = "127.0.0.1:9000";
-      WOODPECKER_HEALTHCHECK ="false";
+      WOODPECKER_HEALTHCHECK = "false";
       WOODPECKER_BACKEND = "local";
       WOODPECKER_MAX_WORKFLOWS = "2";
     };
