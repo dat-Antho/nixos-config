@@ -10,8 +10,8 @@ let
     gs = "git status";
     #  update = "nix flake update && home-manager switch --flake ~/.config/nix#${username}";
     nix-clean = "nix-collect-garbage -d && nix store optimise";
-    nrb = "nh os boot . -- --accept-flake-config ";
-    nrs = "nh os switch . -- --accept-flake-config";
+    nrb = "nh os boot . -- --accept-flake-config --max-jobs 1 ";
+    nrs = "nh os switch . -- --accept-flake-config --max-jobs 1";
     g = "lazygit";
     nfmt = "nix run .#formatter.x86_64-linux -- .";
     f = "fcd";
