@@ -13,6 +13,7 @@
       { url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUkyyRJdVdXFmBuxPLFYmPw"; }
       { url = "https://tldr.tech/api/rss/tech"; }
       { url = "https://www.bleepingcomputer.com/feed/"; }
+      { url = "https://www.nicematin.com/loisirs/festivites/rss"; }
     ];
   };
 }
