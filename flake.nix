@@ -116,7 +116,6 @@
 
       homeConfigurations = {
         revan = mkHMOnly "revan";
-        anthony = mkHMOnly "anthony";
       };
 
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
