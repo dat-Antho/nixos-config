@@ -67,7 +67,7 @@
     packages = with pkgs; [
       firefox
       tree
-      protonup
+      protonup-ng
       keepassxc
       steam-run
     ];
