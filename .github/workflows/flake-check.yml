@@ -16,8 +16,6 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      - name: Install Cachix
-        run: nix profile install nixpkgs#cachix 
       - name: Run flake check
         run: nix flake check
 
