@@ -9,7 +9,7 @@ let
     ll = "ls -alh";
     gs = "git status";
     #  update = "nix flake update && home-manager switch --flake ~/.config/nix#${username}";
-    nix-clean = "nix-collect-garbage -d && nix store optimise";
+    nix-clean = "nix-collect-garbage -d && nix store optimise && nix-store --verify --check-contents --repair";
     nrb = "nh os boot . -- --accept-flake-config";
     nrs = "nh os switch . -- --accept-flake-config";
     g = "lazygit";
