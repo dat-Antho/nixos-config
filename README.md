@@ -2,6 +2,9 @@
 
 [![flake-check](https://github.com/dat-Antho/nixos-config/actions/workflows/flake-check.yml/badge.svg?branch=master)](https://github.com/dat-Antho/nixos-config/actions/workflows/flake-check.yml)
 
+[![sync](https://github.com/dat-Antho/nixos-config/actions/workflows/sync.yml/badge.svg?branch=master)](https://github.com/dat-Antho/nixos-config/actions/workflows/sync.yml)
+
+
 
 ## Nixos config
 
