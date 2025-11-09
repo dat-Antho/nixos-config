@@ -336,6 +336,7 @@
       pipewire
       pulseaudio
       nautilus
+      foot
       libmtp # to connect to android phone
 
     ];
