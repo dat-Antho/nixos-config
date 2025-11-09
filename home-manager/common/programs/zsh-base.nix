@@ -23,7 +23,8 @@ in
     defaultKeymap = "emacs";
     completionInit = "autoload -Uz compinit && compinit -C";
     initContent = lib.mkBefore ''
-            export PATH="$HOME/bin:$PATH"
+      export PATH="$HOME/bin:$PATH"
+      zcompile ~/.zshrc
       fcd() {
         local dir
          dir=$(fd . ~/ /mnt -t d --hidden --exclude .git 2>/dev/null \
