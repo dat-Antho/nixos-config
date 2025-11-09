@@ -21,12 +21,9 @@ in
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-
+    completionInit = "autoload -Uz compinit && compinit -C";
     initContent = lib.mkBefore ''
             export PATH="$HOME/bin:$PATH"
-            autoload -Uz compinit
-            compinit -C
-
       fcd() {
         local dir
          dir=$(fd . ~/ /mnt -t d --hidden --exclude .git 2>/dev/null \
