@@ -21,6 +21,8 @@
       };
       decoration = {
         rounding = 10;
+        blur.enabled = false;
+        shadow.enabled = false;
       };
       input = {
         kb_layout = "us";
@@ -31,14 +33,7 @@
         swallow_regex = "^(kitty|foot|alacritty|footclient)$";
       };
       animations = {
-        enabled = true;
-        bezier = [ "myBezier, 0.05, 0.9, 0.1, 1.05" ];
-        animation = [
-          "windows, 1, 7, myBezier"
-          "border, 1, 10, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
+        enabled = false;
       };
 
       # Keybindings
