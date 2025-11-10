@@ -20,7 +20,6 @@ in
     vdhcoapp
     neofetch
     lf
-    fzf
     fd
     calibre
     easyeffects
