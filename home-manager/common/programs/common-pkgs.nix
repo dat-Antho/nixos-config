@@ -9,5 +9,6 @@ pkgs: with pkgs; [
   tldr
   keepassxc
   signal-desktop
+  fzf
   # …
 ]
