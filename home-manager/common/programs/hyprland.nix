@@ -350,7 +350,7 @@
     enable = true;
     settings = {
 
-      defaultTimeout = 5000; #  milliseconds
+      default-timeout = 5000; #  milliseconds
       ignoreTimeout = false;
     };
 
