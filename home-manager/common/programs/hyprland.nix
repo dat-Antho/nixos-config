@@ -79,6 +79,7 @@
       ];
     };
   };
+
   programs.waybar = {
     enable = true;
     settings = [
@@ -335,6 +336,15 @@
       libmtp # to connect to android phone
 
     ];
+  services.gammastep = {
+    enable = true;
+    latitude = "43.580799";
+    longitude = "7.123900";
+    temperature.day = 5200;
+    temperature.night = 3600;
+    tray = true;
+  };
+
   services.mako = {
     # Notifications
     enable = true;
