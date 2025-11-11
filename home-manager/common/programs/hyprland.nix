@@ -42,7 +42,7 @@
         "$mod,T, exec, kitty"
         "$mod,B, exec, firefox"
         "$mod,E, exec, nautilus"
-        "$mod,D, exec, wofi --show drun"
+        "$mod,D, exec, wofi --show drun -D key_expand=Tab"
         "$mod,Q, killactive"
         "$mod,M, exit"
         "$mod,1, workspace, 1"
