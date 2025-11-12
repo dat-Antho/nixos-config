@@ -351,7 +351,6 @@
     settings = {
 
       default-timeout = 5000; #  milliseconds
-      ignoreTimeout = false;
     };
 
   };
