@@ -17,10 +17,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - uses: wimpysworld/nothing-but-nix@main
-        with:
-          hatchet-protocol: 'Rampage'
-          witness-carnage: false 
+      # - uses: wimpysworld/nothing-but-nix@main
+      #   with:
+      #     hatchet-protocol: 'Rampage'
+      #     witness-carnage: false 
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
