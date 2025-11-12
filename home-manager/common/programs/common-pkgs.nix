@@ -10,5 +10,6 @@ pkgs: with pkgs; [
   keepassxc
   signal-desktop
   fzf
+  nix-init
   # …
 ]
