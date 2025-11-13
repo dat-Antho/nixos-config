@@ -108,7 +108,7 @@ main() {
   SECONDS=0
 
   build_home_manager
- # build_nixos
+  build_nixos aurele
 
   duration=$SECONDS
   printf "✅ Build completed in %02d:%02d\n" $((duration/60)) $((duration%60))
