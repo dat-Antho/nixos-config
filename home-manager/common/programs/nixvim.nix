@@ -22,6 +22,7 @@
   home.packages = [
     pkgs.ripgrep
     pkgs.markdownlint-cli
+    pkgs.jq
   ];
   programs.nixvim = {
     enable = true;
