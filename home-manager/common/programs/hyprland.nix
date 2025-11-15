@@ -110,10 +110,10 @@
         };
 
         network = {
-          format = "↑{bandwidthUpOctets} ↓{bandwidthDownOctets}";
-          tooltip-format = "{ifname} \nGW: {gwaddr}";
-          format-disconnected = "❌ Offline";
-          interval = 1;
+          #"format-wifi" = "  {essid} ({signalStrength}%)";
+          "format-ethernet" = "Eth";
+          "format-disconnected" = "󰤭  Offline";
+          "on-click" = "nm-connection-editor";
         };
 
         battery = {
@@ -123,12 +123,9 @@
 
         pulseaudio = {
           format = "  {volume}%";
-          pulseaudio = {
-            format = "🔊 {volume}%";
-            format-muted = "🔇 Muted";
-            scroll-step = 5; # Volume step with mouse wheel
-            on-click = "pavucontrol"; # Open gui
-          };
+          format-muted = "🔇 Muted";
+          scroll-step = 5; # Volume step with mouse wheel
+          on-click = "pavucontrol"; # Open gui
         };
 
         tray = {
@@ -287,7 +284,6 @@
 
         #network {
           color: @aqua;
-          min-width: 180px; 
         }
 
         #network.disconnected {
@@ -322,20 +318,18 @@
       slurp # Screenshots
       swappy # Annotate screenshots
       # should i keep these ?
-      papirus-icon-theme
-      arc-theme
-      lxappearance # Theming tools
-      swww
-      wofi
+      swww # background manager
+      wofi # launcher
       adwaita-icon-theme
       hyprpolkitagent # allow apps to ask credentials
-      pavucontrol
+      pavucontrol # audio control
       pamixer # used to detect if mic is on
-      pipewire
-      pulseaudio
-      foot
+      pipewire # audio stuff
+      pulseaudio # audio stuff
+      foot # terminal
       libmtp # to connect to android phone
-      nautilus
+      nautilus # file manager
+      networkmanagerapplet # network manager
 
     ];
 
