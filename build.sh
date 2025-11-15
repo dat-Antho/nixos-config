@@ -65,10 +65,20 @@ build_home_manager() {
 ##################################
 
 build_nixos() {
-  mapfile -t hosts < <(get_nixos_targets || true)
-  if [[ ${#hosts[@]} -eq 0 ]]; then
-    echo "ℹ️ No NixOS targets found"
-    return
+ local hosts=()
+  
+  
+  if [[ $# -gt 0 ]]; then
+    hosts=("$@")
+    echo "🎯 Using provided hosts: ${hosts[*]}"
+  else
+    # if no args then target all the nixos configs
+    mapfile -t hosts < <(get_nixos_targets || true)
+    if [[ ${#hosts[@]} -eq 0 ]]; then
+      echo "ℹ️ No NixOS targets found"
+      return
+    fi
+    echo "🧩 NixOS targets: ${hosts[*]}"
   fi
 
   echo "🧩 NixOS targets: ${hosts[*]}"
@@ -98,7 +108,7 @@ main() {
   SECONDS=0
 
   build_home_manager
- # build_nixos
+  build_nixos aurele
 
   duration=$SECONDS
   printf "✅ Build completed in %02d:%02d\n" $((duration/60)) $((duration%60))
