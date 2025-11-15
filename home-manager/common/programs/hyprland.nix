@@ -3,7 +3,6 @@
 , lib
 , ...
 }: {
-
   wayland.windowManager.hyprland = {
     enable = true;
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
@@ -11,6 +10,9 @@
     systemd.enable = false;
     portalPackage = null;
     settings = {
+      env = [
+        "FILE_MANAGER,nautilus"
+      ];
       "$mod" = "SUPER";
       general = {
         "col.active_border" = lib.mkForce "rgb(d79921)";
@@ -41,7 +43,7 @@
         "$mod,Return, exec, foot"
         "$mod,T, exec, kitty"
         "$mod,B, exec, firefox"
-        "$mod,E, exec, nautilus"
+        "$mod,E, exec, $FILE_MANAGER"
         "$mod,D, exec, wofi --show drun -D key_expand=Tab"
         "$mod,Q, killactive"
         "$mod,M, exit"
@@ -331,11 +333,12 @@
       pamixer # used to detect if mic is on
       pipewire
       pulseaudio
-      nautilus
       foot
       libmtp # to connect to android phone
+      nautilus
 
     ];
+
   services.gammastep = {
     enable = true;
     latitude = "43.580799";
@@ -345,6 +348,15 @@
     tray = true;
   };
 
+  # set nautilus as default file manager
+  xdg.mimeApps.enable = true;
+  xdg.mimeApps.defaultApplications = {
+    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+    "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
+  };
+
+
+  # set default file browser
   services.mako = {
     # Notifications
     enable = true;
@@ -352,6 +364,5 @@
 
       default-timeout = 5000; #  milliseconds
     };
-
   };
 }
