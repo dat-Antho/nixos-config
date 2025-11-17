@@ -36,7 +36,6 @@
     extra-cmake-modules
     zlib
     nh
-    httpie
   ];
   imports = [ ];
 
