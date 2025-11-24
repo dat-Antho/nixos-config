@@ -14,6 +14,7 @@
       { url = "https://tldr.tech/api/rss/tech"; }
       { url = "https://www.bleepingcomputer.com/feed/"; }
       { url = "https://www.nicematin.com/loisirs/festivites/rss"; }
+      { url = "https://wiki.nixos.org/w/api.php?hidebots=1&translations=filter&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom"; }
     ];
   };
 }

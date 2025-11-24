@@ -108,6 +108,7 @@
         aurele = mkNixosHost {
           name = "aurele";
           home-manager-directory = "aurele";
+          extraModules = [ stylix.nixosModules.stylix ];
         };
         mark = mkNixosHost {
           name = "mark";
