@@ -48,6 +48,7 @@
   # services.displayManager.gdm.enable = true;
   # services.desktopManager.gnome.enable = true;
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono
   ];
