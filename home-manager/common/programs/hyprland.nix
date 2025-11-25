@@ -98,7 +98,6 @@
         ];
         modules-right = [
           "tray"
-          "network"
           "custom/public-ip"
           "custom/gpu-temp"
           "temperature"
@@ -110,7 +109,7 @@
           format = "{:%d/%m - %H:%M}";
         };
 
-        network = {
+        network = { # not enabled because there is a network tool in system tray
           #"format-wifi" = "  {essid} ({signalStrength}%)";
           "format-ethernet" = "Eth";
           "format-disconnected" = "󰤭  Offline";
@@ -140,11 +139,25 @@
           critical-threshold = 90;
           interval = 5;
         };
+        # "custom/gpu-temp" = {
+        #   exec = "echo -n 'GPU: '; nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | head -n1 | awk '{print $1\"°C\"}'";
+        #   interval = 5;
+        #   return-type = "text";
+        # };
         "custom/gpu-temp" = {
-          exec = "echo -n 'GPU: '; nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | head -n1 | awk '{print $1\"°C\"}'";
-          interval = 5;
-          return-type = "text";
-        };
+  exec = ''
+    temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
+
+    if [ -n "$temp" ] && [ "$temp" != "N/A" ]; then
+      echo "GPU: $temp°C"
+    else
+      echo ""
+    fi
+  '';
+  interval = 5;
+  return-type = "text";
+};
+
         "custom/public-ip" = {
           exec = "curl -L -4 iprs.fly.dev || echo N/A";
           interval = 5;
