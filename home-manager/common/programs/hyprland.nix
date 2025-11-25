@@ -88,7 +88,7 @@
       {
         layer = "top";
         position = "top";
-        height = 36;
+        # height = 36;
 
         modules-left = [
           "hyprland/workspaces"
@@ -98,6 +98,7 @@
         ];
         modules-right = [
           "tray"
+          "network"
           "custom/public-ip"
           "custom/gpu-temp"
           "temperature"
@@ -196,13 +197,13 @@
         .modules-left,
         .modules-center,
         .modules-right {
-          margin: 4px 8px;
+          margin: 2px 4px;
           background-color: transparent;
         }
 
         /* Workspaces */
         #workspaces button {
-          padding: 4px 8px;
+          padding: 2px 4px;
           margin: 2px;
           color: @fg-muted;
           background: transparent;
@@ -237,8 +238,8 @@
         #custom-public-ip,
         #custom-gpu-temp,
         #tray {
-          padding: 2px 10px;
-          margin: 0 4px;
+          padding: 2px 4px;
+          margin: 0 2px;
           border-radius: 8px;
           background-color: @bg-inactive;
           color: @fg-normal;
@@ -293,7 +294,7 @@
         /* Tray icons */
         #tray {
           background-color: @bg-inactive;
-          margin: 0 6px;
+          margin: 0 3px;
         }
 
         #custom-notification {
