@@ -109,7 +109,8 @@
           format = "{:%d/%m - %H:%M}";
         };
 
-        network = { # not enabled because there is a network tool in system tray
+        network = {
+          # not enabled because there is a network tool in system tray
           #"format-wifi" = "  {essid} ({signalStrength}%)";
           "format-ethernet" = "Eth";
           "format-disconnected" = "󰤭  Offline";
@@ -140,18 +141,18 @@
           interval = 5;
         };
         "custom/gpu-temp" = {
-  exec = ''
-    temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
+          exec = ''
+            temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
 
-    if [ -n "$temp" ] && [ "$temp" != "N/A" ]; then
-      echo "GPU: $temp°C"
-    else
-      echo ""
-    fi
-  '';
-  interval = 5;
-  return-type = "text";
-};
+            if [ -n "$temp" ] && [ "$temp" != "N/A" ]; then
+              echo "GPU: $temp°C"
+            else
+              echo ""
+            fi
+          '';
+          interval = 5;
+          return-type = "text";
+        };
 
         "custom/public-ip" = {
           exec = "curl -L -4 iprs.fly.dev || echo N/A";
