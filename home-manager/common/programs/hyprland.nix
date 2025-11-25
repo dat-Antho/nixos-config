@@ -139,11 +139,6 @@
           critical-threshold = 90;
           interval = 5;
         };
-        # "custom/gpu-temp" = {
-        #   exec = "echo -n 'GPU: '; nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | head -n1 | awk '{print $1\"°C\"}'";
-        #   interval = 5;
-        #   return-type = "text";
-        # };
         "custom/gpu-temp" = {
   exec = ''
     temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
