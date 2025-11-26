@@ -52,6 +52,5 @@ in
     ./programs
     ../common/programs/git.nix
     ../common/programs/zoxide.nix
-    ../common/programs/mpv.nix
   ];
 }
