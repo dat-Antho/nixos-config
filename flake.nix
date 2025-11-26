@@ -80,6 +80,7 @@
 
                 ./home-manager/common/programs/nixvim.nix
                 ./home-manager/common/programs/hyprland.nix
+                ./home-manager/common/programs/foot.nix
               ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
               nix.settings.trusted-users = [
