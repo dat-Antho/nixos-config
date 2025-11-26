@@ -68,6 +68,9 @@
             ./nixos-configs/common-modules/nix.nix
             ./nixos-configs/common-modules/ssh-agent.nix
             ./nixos-configs/common-modules/dns.nix
+            ./nixos-configs/common-modules/hyprland.nix
+            ./nixos-configs/common-modules/desktop-env.nix
+
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -76,6 +79,7 @@
                 nixvim.homeModules.nixvim
 
                 ./home-manager/common/programs/nixvim.nix
+                ./home-manager/common/programs/hyprland.nix
               ];
               home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
               nix.settings.trusted-users = [

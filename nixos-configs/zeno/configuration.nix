@@ -13,8 +13,6 @@
     ./modules/nvidia.nix
     ./modules/steam.nix
     ./modules/audio.nix
-    ./modules/desktop-env.nix
-    ../common-modules/hyprland.nix
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

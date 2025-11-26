@@ -16,7 +16,6 @@ in
   home.stateVersion = "24.11"; # Please read the comment before changing.
   imports = [
     ../common/programs/mpv.nix
-    ../common/programs/hyprland.nix
     (import ../common/programs/zsh-base.nix {
       extraAliases = { };
     })

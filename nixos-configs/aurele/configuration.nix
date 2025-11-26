@@ -7,7 +7,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/openssh.nix
-    ../common-modules/hyprland.nix
   ];
 
   # Bootloader.
@@ -44,11 +43,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # # Enable the GNOME Desktop Environment.
-  # services.displayManager.gdm.enable = true;
-  # services.desktopManager.gnome.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
   fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono
   ];

@@ -53,6 +53,5 @@ in
     ../common/programs/git.nix
     ../common/programs/zoxide.nix
     ../common/programs/mpv.nix
-    ../common/programs/hyprland.nix
   ];
 }
