@@ -83,6 +83,7 @@
                 user
               ];
             }
+            stylix.nixosModules.stylix
           ] ++ extraModules;
         };
 
@@ -103,12 +104,12 @@
         zeno = mkNixosHost {
           name = "zeno";
           home-manager-directory = "anthony";
-          extraModules = [ stylix.nixosModules.stylix ];
+          extraModules = [];
         };
         aurele = mkNixosHost {
           name = "aurele";
           home-manager-directory = "aurele";
-          extraModules = [ stylix.nixosModules.stylix ];
+          extraModules = [];
         };
         mark = mkNixosHost {
           name = "mark";
