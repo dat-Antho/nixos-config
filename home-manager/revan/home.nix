@@ -28,7 +28,6 @@
     gitflow
     tldr
     lazygit
-    gcc
     stdenv.cc.cc.lib
     libgcc
     gnumake
