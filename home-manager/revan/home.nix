@@ -28,12 +28,6 @@
     gitflow
     tldr
     lazygit
-    stdenv.cc.cc.lib
-    libgcc
-    gnumake
-    cmake
-    extra-cmake-modules
-    zlib
     nh
   ];
   imports = [ ];
