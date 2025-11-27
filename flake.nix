@@ -109,12 +109,12 @@
         zeno = mkNixosHost {
           name = "zeno";
           home-manager-directory = "anthony";
-          extraModules = [];
+          extraModules = [ ];
         };
         aurele = mkNixosHost {
           name = "aurele";
           home-manager-directory = "aurele";
-          extraModules = [];
+          extraModules = [ ];
         };
         mark = mkNixosHost {
           name = "mark";
