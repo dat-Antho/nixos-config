@@ -24,6 +24,7 @@
     pkgs.markdownlint-cli
     pkgs.jq
     pkgs.gcc
+    pkgs.fd
   ];
   programs.nixvim = {
     enable = true;
