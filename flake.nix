@@ -61,8 +61,9 @@
           inherit system;
           modules = [
             # If you want to share a module on all the nixos configs, put it here
-            ./nixos-configs/${name}/configuration.nix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
+            ./nixos-configs/${name}/configuration.nix
             ./nixos-configs/common-modules/syncthing.nix
             ./nixos-configs/common-modules/ntp.nix
             ./nixos-configs/common-modules/nix.nix
@@ -70,7 +71,6 @@
             ./nixos-configs/common-modules/dns.nix
             ./nixos-configs/common-modules/hyprland.nix
             ./nixos-configs/common-modules/desktop-env.nix
-            stylix.nixosModules.stylix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
