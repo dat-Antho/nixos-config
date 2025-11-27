@@ -27,8 +27,9 @@
         shadow.enabled = false;
       };
       input = {
-        kb_layout = "us";
-        kb_variant = "intl";
+        kb_layout = "us,fr";
+        kb_variant = "intl,";
+        kb_options = "grp:win_space_toggle";
       };
       misc = {
         enable_swallow = true;
@@ -103,8 +104,12 @@
           "temperature"
           "battery"
           "pulseaudio"
+          "hyprland/language"
         ];
-
+        "hyprland/language" = {
+          format = "{short}";
+          format-alt = "{short}";
+        };
         clock = {
           format = "{:%d/%m - %H:%M}";
         };
