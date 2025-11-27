@@ -70,7 +70,7 @@
             ./nixos-configs/common-modules/dns.nix
             ./nixos-configs/common-modules/hyprland.nix
             ./nixos-configs/common-modules/desktop-env.nix
-
+            stylix.nixosModules.stylix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -89,7 +89,6 @@
                 user
               ];
             }
-            stylix.nixosModules.stylix
           ] ++ extraModules;
         };
 
