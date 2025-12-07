@@ -24,6 +24,8 @@
   networking.firewall.enable = false;
   # Set your time zone.
   time.timeZone = "Europe/Paris";
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
