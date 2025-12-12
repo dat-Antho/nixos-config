@@ -57,7 +57,7 @@ build_home_manager() {
   done
   nix build --max-jobs 2 "${args[@]}" --out-link ./result-hm
   nix path-info --recursive ./result-hm | cachix push "$CACHIX_NAME"
-  cleanup_store
+
 }
 
 ##################################
@@ -94,8 +94,6 @@ build_nixos() {
   if [[ -n "${CACHIX_NAME:-}" ]]; then
     nix path-info --recursive "${args[@]}" | cachix push "$CACHIX_NAME"
   fi
-
-  cleanup_store
 }
 ##################################
 # Main
@@ -109,7 +107,8 @@ main() {
 
   build_home_manager
   build_nixos aurele
-
+  cleanup_store
+  
   duration=$SECONDS
   printf "✅ Build completed in %02d:%02d\n" $((duration/60)) $((duration%60))
 }
