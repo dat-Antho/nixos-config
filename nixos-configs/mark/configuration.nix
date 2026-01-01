@@ -22,7 +22,7 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
-  systemd.services.dbus-broker.reloadIfChanged = false; # no reload during switch
+  services.dbus.implementation = "dbus";
   ############################
   # Firewall
   ############################

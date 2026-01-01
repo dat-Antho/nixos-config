@@ -10,10 +10,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     extraConfig.pipewire."92-low-latency" = {
-    "context.properties" = {
-      "default.clock.rate" = 48000;
-      "default.clock.min-quantum" = 64;
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.min-quantum" = 64;
+      };
     };
-  };
   };
 }

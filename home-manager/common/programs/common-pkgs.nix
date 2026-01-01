@@ -10,10 +10,10 @@ pkgs: with pkgs; [
   keepassxc
   signal-desktop
   fzf
-    ifuse
-    libimobiledevice
- nix-init
-    fd
-    exfat
+  ifuse
+  libimobiledevice
+  nix-init
+  fd
+  exfat
   # …
 ]
