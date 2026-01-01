@@ -24,17 +24,10 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      - name: Install Cachix
-        run: nix profile install nixpkgs#cachix 
       - name: Run flake bump
         id: bump
         run: |
           ./flake-bump.sh
-
-      - name: Build if flake-bump updated
-        id: build
-        if: steps.bump.outputs.changed == 'true'
-        run: ./build.sh
 
       - name: Auto commit updated flake.lock
         if: steps.bump.outputs.changed == 'true' && steps.build.outcome == 'success'
