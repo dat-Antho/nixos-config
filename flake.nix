@@ -55,53 +55,68 @@
     }:
     let
       system = "x86_64-linux";
-      # function to create a nixos configuration with home-manager
-      mkNixosHost =
+
+      commonBaseModules = [
+        home-manager.nixosModules.home-manager
+        ./nixos-configs/common-modules/syncthing.nix
+        ./nixos-configs/common-modules/ntp.nix
+        ./nixos-configs/common-modules/nix.nix
+        ./nixos-configs/common-modules/ssh-agent.nix
+        ./nixos-configs/common-modules/dns.nix
+      ];
+
+      commonDesktopModules = [
+        stylix.nixosModules.stylix
+        ./nixos-configs/common-modules/hyprland.nix
+        ./nixos-configs/common-modules/desktop-env.nix
+      ];
+
+      hmCommonBaseModules = [
+        nixvim.homeModules.nixvim
+        ./home-manager/common/programs/nixvim.nix
+      ];
+
+      hmCommonDesktopModules = [
+        ./home-manager/common/programs/hyprland.nix
+        ./home-manager/common/programs/foot.nix
+        ./home-manager/common/programs/mpv.nix
+      ];
+
+      mkNixos =
         { name
-        , # represent the name of the system
-          user ? "anthony"
-        , # name of the main user
-          home-manager-directory
-        , # name of directory containing the desired home.nix
-          extraModules ? [ ]
-        ,
+        , user ? "anthony"
+        , home-manager-directory
+        , extraModules ? [ ]
+        , desktop ? false
         }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [
-            # If you want to share a module on all the nixos configs, put it here
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            ./nixos-configs/${name}/configuration.nix
-            ./nixos-configs/common-modules/syncthing.nix
-            ./nixos-configs/common-modules/ntp.nix
-            ./nixos-configs/common-modules/nix.nix
-            ./nixos-configs/common-modules/ssh-agent.nix
-            ./nixos-configs/common-modules/dns.nix
-            ./nixos-configs/common-modules/hyprland.nix
-            ./nixos-configs/common-modules/desktop-env.nix
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "";
-              home-manager.sharedModules = [
-                nixvim.homeModules.nixvim
+          modules =
+            (commonBaseModules
+              ++ (if desktop then commonDesktopModules else [ ])
+              ++ [
+              ./nixos-configs/${name}/configuration.nix
 
-                ./home-manager/common/programs/nixvim.nix
-                ./home-manager/common/programs/hyprland.nix
-                ./home-manager/common/programs/foot.nix
-                ./home-manager/common/programs/mpv.nix
-              ];
-              home-manager.users.${user} = import ./home-manager/${home-manager-directory}/home.nix;
-              nix.settings.trusted-users = [
-                "root"
-                user
-              ];
-            }
-          ] ++ extraModules;
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.backupFileExtension = "";
+
+                home-manager.sharedModules =
+                  hmCommonBaseModules
+                    ++ (if desktop then hmCommonDesktopModules else [ ]);
+
+                home-manager.users.${user} =
+                  import ./home-manager/${home-manager-directory}/home.nix;
+
+                nix.settings.trusted-users = [ "root" user ];
+              }
+            ]
+              ++ extraModules);
         };
 
-      # create only home-manager config
+      mkNixosHost = args: mkNixos (args // { desktop = true; });
+      mkNixosHeadless = args: mkNixos (args // { desktop = false; });
       mkHMOnly =
         name:
         home-manager.lib.homeManagerConfiguration {
@@ -125,7 +140,7 @@
           home-manager-directory = "aurele";
           extraModules = [ ];
         };
-        mark = mkNixosHost {
+        mark = mkNixosHeadless {
           name = "mark";
           home-manager-directory = "mark";
           extraModules = [ disko.nixosModules.disko ];
