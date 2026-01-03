@@ -22,7 +22,6 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
-  services.dbus.implementation = "dbus";
   ############################
   # Firewall
   ############################
