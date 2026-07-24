@@ -15,6 +15,7 @@
         notes
         vpn
         ebook-library
+        music-player
       ])
       ++ [
       ];
