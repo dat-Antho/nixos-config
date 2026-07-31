@@ -196,7 +196,10 @@ nh home build .#revan
 
 ```
 home-manager switch --flake .#<user>
+#or
+nix run github:nix-community/home-manager/release-unstable -- switch --flake  TOCHANGE
 ```
+
 
 Example:
 
