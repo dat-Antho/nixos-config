@@ -34,24 +34,29 @@
         # The home.packages option allows you to install Nix packages into your
         # environment.
         home.packages = with pkgs; [
-          python312
-          python312Packages.pip
-          python312Packages.nox
-          python312Packages.virtualenv
-          python312Packages.mypy
-          (poetry.override { python3 = python312; })
           gitflow
           tldr
           lazygit
           nh
           zellij
           k9s
-          stdenv.cc.cc.lib
         ];
-
+        programs.uv = {
+            enable = true;
+        
+            python = {
+              versions = [ "3.14" "3.13" "3.12" "3.11" ];
+              default = [ "3.11" ];
+              prune = true;
+            };
+        
+            tool = {
+              packages = ["poetry" "nox" ];
+              prune = true;
+            };
+          };
         home.sessionVariables = {
           EDITOR = "nvim";
-          LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
         };
         programs.zsh.shellAliases = {
           hmrs = "nh home switch --accept-flake-config ~/nixos-config -c revan";
