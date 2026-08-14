@@ -3,10 +3,13 @@
   # Dependencies
   #
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
+
   extraPackages = with pkgs; [
+
     # Used to format Lua code
     stylua
     black
+    nixfmt
   ];
 
   # Autoformat
@@ -19,9 +22,11 @@
         lua = [ "stylua" ];
         # Conform can also run multiple formatters sequentially
         python = [ "black" ];
+        nix = [ "nixfmt" ];
 
         #
         # You can use a sublist to tell conform to run *until* a formatter
+
         # is found
         # javascript = [ [ "prettierd" "prettier" ] ];
       };
