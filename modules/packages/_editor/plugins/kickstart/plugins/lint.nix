@@ -1,12 +1,18 @@
-{
+{ pkgs, ... }: {
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
+  extraPackages = with pkgs; [
+    deadnix
+  ];
   plugins.lint = {
     enable = true;
 
     # NOTE: Enabling these will cause errors unless these tools are installed
     lintersByFt = {
-      nix = [ "nix" ];
+      nix = [
+        "nix"
+        "deadnix"
+      ];
       markdown = [
         "markdownlint"
         #vale
