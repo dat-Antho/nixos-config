@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  # Dependencies
-  # { 'Bilal2453/luvit-meta', lazy = true },
-  #
-  #
   # Allows extra capabilities providied by nvim-cmp
   # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
   plugins.cmp-nvim-lsp = {
@@ -20,7 +16,6 @@
   extraPlugins = with pkgs.vimPlugins; [
     # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
     #
-    # TODO: Add luvit-meta when Nixos package is added
   ];
 
   # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
@@ -89,6 +84,9 @@
         };
       };
       nil_ls = {
+        enable = true;
+      };
+      statix = {
         enable = true;
       };
       pylsp = {

@@ -20,7 +20,9 @@
     ./plugins/autopairs.nix
     ./plugins/neo-tree.nix
     ./plugins/venv-selector.nix
+    ./plugins/trouble.nix
   ];
+
   # You can easily change to a different colorscheme.
   # Add your colorscheme here and enable it.
   # Don't forget to disable the colorschemes you arent using
