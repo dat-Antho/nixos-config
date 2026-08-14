@@ -19,6 +19,7 @@
     ./plugins/lint.nix
     ./plugins/autopairs.nix
     ./plugins/neo-tree.nix
+    ./plugins/venv-selector.nix
   ];
   # You can easily change to a different colorscheme.
   # Add your colorscheme here and enable it.
