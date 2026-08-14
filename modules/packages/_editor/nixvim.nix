@@ -15,10 +15,10 @@
     ./plugins/treesitter.nix
     ./plugins/precognition.nix
     ./plugins/markview.nix
-    ./plugins/kickstart/plugins/indent-blankline.nix
-    ./plugins/kickstart/plugins/lint.nix
-    ./plugins/kickstart/plugins/autopairs.nix
-    ./plugins/kickstart/plugins/neo-tree.nix
+    ./plugins/indent-blankline.nix
+    ./plugins/lint.nix
+    ./plugins/autopairs.nix
+    ./plugins/neo-tree.nix
   ];
   # You can easily change to a different colorscheme.
   # Add your colorscheme here and enable it.
