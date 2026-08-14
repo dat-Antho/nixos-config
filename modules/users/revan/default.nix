@@ -66,8 +66,8 @@
         };
         home.sessionVariables = {
           EDITOR = "nvim";
-            LD_LIBRARY_PATH = "";
-            LIBRARY_PATH = "";
+          LD_LIBRARY_PATH = "";
+          LIBRARY_PATH = "";
 
         };
         programs.zsh.shellAliases = {
