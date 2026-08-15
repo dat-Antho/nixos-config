@@ -7,7 +7,7 @@
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
-      home.packages = [ self.packages.${pkgs.system}.nvim ];
+      home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim ];
     };
   perSystem =
     { system, ... }:
