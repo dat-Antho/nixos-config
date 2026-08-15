@@ -99,6 +99,13 @@
           };
         };
       };
+      bashls = {
+        enable = true;
+        filetypes = [
+          "bash"
+          "zsh"
+        ];
+      };
     };
 
     keymaps = {
