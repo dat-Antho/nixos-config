@@ -20,7 +20,7 @@
       imports = [ wlib.wrapperModules.niri ];
       settings = {
         spawn-at-startup = [
-          (lib.getExe self.packages.${pkgs.system}.noctalia)
+          (lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia)
         ];
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
@@ -49,9 +49,11 @@
         layout.center-focused-column = "never";
         binds = {
           "Mod+Shift+Slash".show-hotkey-overlay = _: { };
-          "Mod+Return".spawn-sh = lib.getExe self.packages.${pkgs.system}.foot;
+          "Mod+Return".spawn-sh = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.foot;
           "Mod+B".spawn = lib.getExe pkgs.firefox;
-          "Mod+D".spawn-sh = "${lib.getExe self.packages.${pkgs.system}.noctalia} ipc call launcher toggle";
+          "Mod+D".spawn-sh = "${
+            lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia
+          } ipc call launcher toggle";
           "Mod+O".toggle-overview = _: { };
           "Mod+Q".close-window = _: { };
           "Mod+Left".focus-column-left = _: { };

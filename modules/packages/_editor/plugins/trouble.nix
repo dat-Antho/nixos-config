@@ -5,7 +5,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>xx";
+      key = "<leader>cx";
       action = "<cmd>Trouble diagnostics toggle<cr>";
     }
     {

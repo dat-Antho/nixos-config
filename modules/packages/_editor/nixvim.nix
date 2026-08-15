@@ -3,26 +3,6 @@
   ...
 }:
 {
-  imports = [
-    # Plugins
-    ./plugins/gitsigns.nix
-    ./plugins/which-key.nix
-    ./plugins/telescope.nix
-    ./plugins/conform.nix
-    ./plugins/lsp.nix
-    ./plugins/nvim-cmp.nix
-    ./plugins/mini.nix
-    ./plugins/treesitter.nix
-    ./plugins/precognition.nix
-    ./plugins/markview.nix
-    ./plugins/indent-blankline.nix
-    ./plugins/lint.nix
-    ./plugins/autopairs.nix
-    ./plugins/neo-tree.nix
-    ./plugins/venv-selector.nix
-    ./plugins/trouble.nix
-  ];
-
   # You can easily change to a different colorscheme.
   # Add your colorscheme here and enable it.
   # Don't forget to disable the colorschemes you arent using

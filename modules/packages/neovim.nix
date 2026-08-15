@@ -14,8 +14,11 @@
     {
       packages.nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
         module = {
-          imports = [ ./_editor/nixvim.nix ];
+          imports = [
+            (inputs.import-tree ./_editor) # imports config and plugins
+          ];
           nixpkgs.source = inputs.nixpkgs;
+
         };
       };
     };

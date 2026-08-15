@@ -3,7 +3,7 @@
   flake.homeModules.terminal-file-manager =
     { pkgs, ... }:
     {
-      home.packages = [ self.packages.${pkgs.system}.yazi ];
+      home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.yazi ];
     };
 
   flake.wrappers.yazi =

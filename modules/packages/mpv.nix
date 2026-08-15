@@ -3,7 +3,7 @@
   flake.homeModules.multimedia-player =
     { pkgs, ... }:
     {
-      home.packages = [ self.packages.${pkgs.system}.mpv ];
+      home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.mpv ];
     };
 
   flake.wrappers.mpv =
