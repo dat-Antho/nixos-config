@@ -13,10 +13,10 @@
   };
 
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugi#extraplugins
-  extraPlugins = with pkgs.vimPlugins; [
-    # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
-    #
-  ];
+  # extraPlugins = with pkgs.vimPlugins; [
+  #   # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
+  #   #
+  # ];
 
   # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
   autoGroups = {
@@ -89,15 +89,8 @@
       statix = {
         enable = true;
       };
-      pylsp = {
+      pyright = {
         enable = true;
-        settings = {
-          plugins = {
-            yapf.enabled = false;
-            pyflakes.enabled = false;
-            autopep8.enabled = false;
-          };
-        };
       };
       bashls = {
         enable = true;
