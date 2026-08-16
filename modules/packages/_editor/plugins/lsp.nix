@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # Allows extra capabilities providied by nvim-cmp
   # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
@@ -66,7 +65,7 @@
     servers = {
       # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
       lua_ls = {
-        enable = true;
+        enable = false;
 
         # cmd = {
         #};
