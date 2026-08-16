@@ -6,6 +6,8 @@
 
     # Document existing key chains
     settings = {
+      preset = "modern";
+
       spec = [
         {
           __unkeyed-1 = "<leader>c";

@@ -123,14 +123,14 @@
           };
         }
         # Find references for the word under your cursor.
-        {
-          mode = "n";
-          key = "gr";
-          action.__raw = "require('telescope.builtin').lsp_references";
-          options = {
-            desc = "LSP: [G]oto [R]eferences";
-          };
-        }
+        # {
+        #   mode = "n";
+        #   key = "gr";
+        #   action.__raw = "require('telescope.builtin').lsp_references";
+        #   options = {
+        #     desc = "LSP: [G]oto [R]eferences";
+        #   };
+        # }
         # Jump to the implementation of the word under your cursor.
         #  Useful when your language has ways of declaring types without an actual implementation.
         {
@@ -212,22 +212,13 @@
     #   function will be executred to configure the current buffer
     # NOTE: This is an example of an attribute that takes raw lua
     onAttach = ''
-      -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-      -- to define small helper and utility functions so you don't have to repeat yourself.
-      --
-      -- In this case, we create a function that lets us more easily define mappings specific
-      -- for LSP related items. It sets the mode, buffer and description for us each time.
       local map = function(keys, func, desc)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
       end
 
-      -- The following two autocommands are used to highlight references of the
-      -- word under the cursor when your cursor rests there for a little while.
-      --    See `:help CursorHold` for information about when this is executed
-      --
-      -- When you move your cursor, the highlights will be cleared (the second autocommand).
       if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
         local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+
         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
           buffer = bufnr,
           group = highlight_augroup,
@@ -244,20 +235,22 @@
           group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
           callback = function(event2)
             vim.lsp.buf.clear_references()
-            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+            vim.api.nvim_clear_autocmds {
+              group = 'kickstart-lsp-highlight',
+              buffer = event2.buf,
+            }
           end,
         })
       end
 
-      -- The following autocommand is used to enable inlay hints in your
-      -- code, if the language server you are using supports them
-      --
-      -- This may be unwanted, since they displace some of your code
       if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
         map('<leader>th', function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+          vim.lsp.inlay_hint.enable(
+            not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }
+          )
         end, '[T]oggle Inlay [H]ints')
       end
     '';
   };
+
 }
