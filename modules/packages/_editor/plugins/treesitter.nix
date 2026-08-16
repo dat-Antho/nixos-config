@@ -1,23 +1,29 @@
-{
+{ pkgs,config, ... }: {
   # Highlight, edit, and navigate code
   # https://nix-community.github.io/nixvim/plugins/treesitter/index.html
+  extraPackages = with pkgs; [
+    tree-sitter
+  ];
   plugins.treesitter = {
     enable = true;
 
-    settings = {
-      ensureInstalled = [
-        "bash"
-        "c"
-        "diff"
-        "html"
-        "lua"
-        "luadoc"
-        "markdown"
-        "markdown_inline"
-        "query"
-        "vim"
-        "vimdoc"
+      grammarPackages =
+      with config.plugins.treesitter.package.builtGrammars;
+      [
+        bash
+        c
+        diff
+        html
+        lua
+        luadoc
+        markdown
+        markdown_inline
+        query
+        vim
+        vimdoc
+        nix
       ];
+    settings = {
 
       highlight = {
         enable = true;
