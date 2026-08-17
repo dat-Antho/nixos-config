@@ -20,6 +20,7 @@
       vim
       vimdoc
       nix
+      python
     ];
     settings = {
 
