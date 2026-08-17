@@ -85,9 +85,6 @@
       nil_ls = {
         enable = true;
       };
-      statix = {
-        enable = true;
-      };
       pyright = {
         enable = true;
       };

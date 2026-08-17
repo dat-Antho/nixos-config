@@ -1,9 +1,8 @@
-{ pkgs, ... }: {
+{
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
-  extraPackages = with pkgs; [
-    deadnix
-  ];
+  # extraPackages = with pkgs; [
+  # ];
   plugins.lint = {
     enable = true;
 
@@ -11,7 +10,7 @@
     lintersByFt = {
       nix = [
         "nix"
-        "deadnix"
+        "statix"
       ];
       markdown = [
         "markdownlint"
