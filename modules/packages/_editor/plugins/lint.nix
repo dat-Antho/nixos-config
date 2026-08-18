@@ -1,6 +1,9 @@
-{
+{ pkgs, ... }: {
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
+  extraPackages = with pkgs; [
+    statix
+  ];
   plugins.lint = {
     enable = true;
 
@@ -14,7 +17,7 @@
         "markdownlint"
         #vale
       ];
-      python = ["pylint"];
+      python = [ "pylint" ];
       #clojure = ["clj-kondo"];
       #dockerfile = ["hadolint"];
       #inko = ["inko"];
