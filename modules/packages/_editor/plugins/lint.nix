@@ -1,8 +1,9 @@
 {
   # Linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
-  # extraPackages = with pkgs; [
-  # ];
+   extraPackages = with pkgs; [
+    pylint
+   ];
   plugins.lint = {
     enable = true;
 
