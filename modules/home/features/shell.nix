@@ -15,6 +15,7 @@
         nix-clean = "nix-collect-garbage -d && nix store optimise && nix-store --verify --check-contents --repair";
         nrb = "nh os boot . -- --accept-flake-config";
         nrs = "nh os switch . -- --accept-flake-config";
+        clean = "nh clean all --keep 3";
         g = "lazygit";
         blk = "lsblk -o NAME,SIZE,MODEL,MOUNTPOINT";
         lsprs = "export PRS=($(gh pr list --json number -q '.[].number')) && for i in $PRS;do gh pr view $i;done";
