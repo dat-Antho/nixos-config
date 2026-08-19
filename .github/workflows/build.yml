@@ -6,6 +6,10 @@ on:
       - opened
       - synchronize
       - reopened
+
+  push:
+    branches:
+      - master
 concurrency:
   group: mr-build
   cancel-in-progress: true
