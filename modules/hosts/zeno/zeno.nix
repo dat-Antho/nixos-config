@@ -85,7 +85,6 @@
         initialPassword = "test";
         packages = with pkgs; [
           firefox
-          protonup-ng
           steam-run
           vial # keyboard config
         ];
