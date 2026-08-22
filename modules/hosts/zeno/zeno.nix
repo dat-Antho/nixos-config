@@ -87,6 +87,7 @@
           firefox
           steam-run
           vial # keyboard config
+          syncplay
         ];
       };
       fonts.packages = [
