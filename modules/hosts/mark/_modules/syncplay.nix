@@ -20,13 +20,16 @@ in
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:8999";
         };
       };
     };
     syncplay = {
       enable = true;
-      interfaceIpv4 = "127.0.0.1";
+
+      extraArgs = [
+        "--ipv4-only"
+      ];
+
       port = 8999;
       chat = false;
       passwordFile = config.sops.secrets."syncplay".path;
