@@ -35,6 +35,7 @@
         ./_modules/search-engine.nix
         ./_modules/music-server.nix
         ./_modules/mail-server.nix
+        ./_modules/syncplay.nix
         ./../../../hardware/mark/disk-config.nix
       ];
 
