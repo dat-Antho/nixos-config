@@ -32,6 +32,7 @@
         x-server
         gnome
         base
+        vpn
         password-manager
         file-encryption
       ])
