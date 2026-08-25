@@ -1,9 +1,10 @@
 {
   config,
+  network,
   ...
 }:
 let
-  domain = "syncp.datantho.ovh";
+  vhost = "syncp.${network.domains.vps}";
 in
 {
 
@@ -16,7 +17,7 @@ in
   services = {
     nginx = {
 
-      virtualHosts.${domain} = {
+      virtualHosts.${vhost} = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
@@ -33,7 +34,7 @@ in
       port = 8999;
       chat = false;
       passwordFile = config.sops.secrets."syncplay".path;
-      useACMEHost = domain;
+      useACMEHost = vhost;
     };
   };
 

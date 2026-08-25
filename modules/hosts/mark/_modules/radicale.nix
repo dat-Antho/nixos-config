@@ -1,7 +1,11 @@
 {
   config,
+  network,
   ...
 }:
+let
+  vhost = "cal.${network.domain.vps}";
+in
 {
   sops.secrets."radicale" = {
     sopsFile = ../../../../secrets/radicale.yaml;
@@ -12,22 +16,39 @@
     mode = "0400";
   };
 
-  services.radicale = {
-    enable = true;
-
-    # Minimal Radicale config; listens only on localhost
-    settings = {
-      server = {
-        hosts = [ "127.0.0.1:5232" ];
+  services = {
+    nginx = {
+      virtualHosts."${vhost}" = {
+        enableACME = true;
+        forceSSL = true;
+        locations = {
+          "/" = {
+            proxyPass = "http://127.0.0.1:5232/";
+            extraConfig = ''
+              proxy_set_header X-Script-Name /radicale/;
+              proxy_pass_header Authorization;
+            '';
+          };
+        };
       };
+    };
 
-      auth = {
-        type = "htpasswd";
-        htpasswd_filename = config.sops.secrets."radicale".path;
-        htpasswd_encryption = "bcrypt";
+    radicale = {
+      enable = true;
+
+      # Minimal Radicale config; listens only on localhost
+      settings = {
+        server = {
+          hosts = [ "127.0.0.1:5232" ];
+        };
+
+        auth = {
+          type = "htpasswd";
+          htpasswd_filename = config.sops.secrets."radicale".path;
+          htpasswd_encryption = "bcrypt";
+        };
+
       };
-
     };
   };
-
 }
