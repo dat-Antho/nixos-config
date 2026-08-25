@@ -1,6 +1,6 @@
-_:
+{ network, ... }:
 let
-  domain = "music.datantho.ovh";
+  vhost = "music.${network.domains.vps}";
 in
 {
   services.navidrome = {
@@ -11,7 +11,7 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."${domain}" = {
+    virtualHosts."${vhost}" = {
       enableACME = true;
       forceSSL = true;
 
