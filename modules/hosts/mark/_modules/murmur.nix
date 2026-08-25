@@ -1,10 +1,11 @@
 {
   config,
+  network,
   ...
 }:
 let
-  domain = "voice.datantho.ovh";
-  certDir = config.security.acme.certs.${domain}.directory;
+  vhost = "voice.${network.domains.vps}";
+  certDir = config.security.acme.certs.${vhost}.directory;
 in
 {
 
@@ -21,7 +22,7 @@ in
   };
 
   security.acme = {
-    certs.${domain} = {
+    certs.${vhost} = {
 
       group = "certreaders";
       reloadServices = [
@@ -30,7 +31,7 @@ in
     };
   };
   # The cert is generated via http challenge, this is more simple this way
-  services.nginx.virtualHosts.${domain} = {
+  services.nginx.virtualHosts.${vhost} = {
     enableACME = true;
     forceSSL = true;
     # locations."/" = {
@@ -47,13 +48,15 @@ in
   services.murmur = {
     enable = true;
     environmentFile = config.sops.secrets."murmur/env".path;
+
     openFirewall = true;
     password = "$MURMURD_PASSWORD";
 
     tls = {
-      certPath = "${certDir}/fullchain.pem";
-      keyPath = "${certDir}/key.pem";
-      caPath = "${certDir}/chain.pem";
+      useACMEHost = vhost;
+      # certPath = "${certDir}/fullchain.pem";
+      # keyPath = "${certDir}/key.pem";
+      # caPath = "${certDir}/chain.pem";
     };
   };
 }
