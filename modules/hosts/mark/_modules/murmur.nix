@@ -5,7 +5,6 @@
 }:
 let
   vhost = "voice.${network.domains.vps}";
-  certDir = config.security.acme.certs.${vhost}.directory;
 in
 {
 
@@ -34,8 +33,6 @@ in
   services.nginx.virtualHosts.${vhost} = {
     enableACME = true;
     forceSSL = true;
-    # locations."/" = {
-    #proxyPass = "http://127.0.0.1:3000";
     #};
   };
   sops.secrets."murmur/env" = {
@@ -54,9 +51,6 @@ in
 
     tls = {
       useACMEHost = vhost;
-      # certPath = "${certDir}/fullchain.pem";
-      # keyPath = "${certDir}/key.pem";
-      # caPath = "${certDir}/chain.pem";
     };
   };
 }
