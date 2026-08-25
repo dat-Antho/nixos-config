@@ -57,18 +57,31 @@
 
   outputs =
     inputs:
+    let
+      # defining some usefull variables there
+      # to propagate those, see specialArgs in
+      # mkNixos
+      network = {
+        domains = {
+          vps = "datantho.ovh";
+        };
+      };
+    in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
       ];
+
       imports = [
         inputs.home-manager.flakeModules.home-manager
         inputs.wrapper-modules.flakeModules.wrappers
         (inputs.import-tree ./modules)
       ];
 
+      _module.args = {
+        inherit network;
+      };
     };
-
 }

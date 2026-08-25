@@ -1,4 +1,9 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  network,
+  ...
+}:
 {
   # Builds a NixOS system configuration with Home Manager pre-configured.
   # Abstracts away boilerplate (system, specialArgs, HM options) so each
@@ -18,7 +23,7 @@
     modules:
     inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs self; };
+      specialArgs = { inherit inputs self network; };
       modules = [
         inputs.home-manager.nixosModules.home-manager
         {
