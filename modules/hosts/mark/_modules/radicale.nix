@@ -4,7 +4,7 @@
   ...
 }:
 let
-  vhost = "cal.${network.domain.vps}";
+  vhost = "cal.${network.domains.vps}";
 in
 {
   sops.secrets."radicale" = {
