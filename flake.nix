@@ -58,9 +58,10 @@
   outputs =
     inputs:
     let
-      # defining some usefull variables there
-      # to propagate those, see specialArgs in
-      # mkNixos
+      # defining some usefull variables there to propagate those,
+      # see:
+      #   _module.args (mandatory to propagate vars in flake parts)
+      #   specialArgs in mkNixos (usefull to propagate vars in nixos modules)
       network = {
         domains = {
           vps = "datantho.ovh";
