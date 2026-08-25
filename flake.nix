@@ -57,17 +57,6 @@
 
   outputs =
     inputs:
-    let
-      # defining some usefull variables there to propagate those,
-      # see:
-      #   _module.args (mandatory to propagate vars in flake parts)
-      #   specialArgs in mkNixos (usefull to propagate vars in nixos modules)
-      network = {
-        domains = {
-          vps = "datantho.ovh";
-        };
-      };
-    in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -81,8 +70,5 @@
         (inputs.import-tree ./modules)
       ];
 
-      _module.args = {
-        inherit network;
-      };
     };
 }
