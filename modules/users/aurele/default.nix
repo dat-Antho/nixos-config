@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, system, ... }:
 {
   flake.homeModules.aurele-module =
     { pkgs, ... }:
@@ -6,8 +6,8 @@
       imports = [
         self.homeModules.base-desktop
       ];
-      home.username = "anthony";
-      home.homeDirectory = "/home/anthony";
+      home.username = system.users.main;
+      home.homeDirectory = "/home/${system.users.main}";
 
       #
       # You should not change this value, even if you update Home Manager. If you do
