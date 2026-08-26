@@ -8,6 +8,7 @@ _: {
     network = {
       domains = {
         vps = "datantho.ovh";
+        main = "anthonyhengy.fr";
       };
     };
   };

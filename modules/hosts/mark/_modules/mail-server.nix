@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  network,
   ...
 }:
 let
-  domain = "anthonyhengy.fr";
-  mailHost = "mail.anthonyhengy.fr";
+  domain = network.domains.main;
+  mailHost = "mail.${domain}";
 in
 {
   networking.firewall.allowedTCPPorts = [
