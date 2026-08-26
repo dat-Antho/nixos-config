@@ -11,5 +11,11 @@ _: {
         main = "anthonyhengy.fr";
       };
     };
+    system = {
+      users = {
+        main = "anthony";
+        dev = "ahengy";
+      };
+    };
   };
 }
