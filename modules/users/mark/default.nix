@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, system, ... }:
 
 {
 
@@ -10,8 +10,8 @@
       ];
 
       home = {
-        username = "anthony";
-        homeDirectory = "/home/anthony";
+        username = system.users.main;
+        homeDirectory = "/home/${system.users.main}";
 
         # You should not change this value, even if you update Home Manager. If you do
         # want to update the value, then make sure to first check the Home Manager
