@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, system, ... }:
 {
   flake.homeModules.anthony-module =
     { pkgs, ... }:
@@ -8,8 +8,8 @@
         self.homeModules.python
         self.homeModules.newsboat
       ];
-      home.username = "anthony";
-      home.homeDirectory = "/home/anthony";
+      home.username = system.users.main;
+      home.homeDirectory = "/home/${system.users.main}";
       home.stateVersion = "24.05";
       home.sessionVariables = {
         LANG = "en_US.UTF-8";
