@@ -1,14 +1,15 @@
-{ self, inputs, ... }:
+{
+  self,
+  mkHome,
+  system,
+  ...
+}:
 
 {
   flake = {
-    homeConfigurations."revan" = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      extraSpecialArgs = { inherit inputs; };
-      modules = [
-        self.homeModules.revan-module
-      ];
-    };
+    homeConfigurations.revan = mkHome "x86_64-linux" [
+      self.homeModules.revan-module
+    ];
 
     homeModules.revan-module =
       { pkgs, ... }:
@@ -19,8 +20,8 @@
 
         # Home Manager needs a bit of information about you and the paths it should
         # manage.
-        home.username = "ahengy";
-        home.homeDirectory = "/home/ahengy";
+        home.username = system.users.dev;
+        home.homeDirectory = "/home/${system.users.dev}";
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
